@@ -1,4 +1,4 @@
-const productList = [
+export const productList = [
   {
     id: 1,
     name: "R001",
@@ -55,4 +55,4 @@ const productList = [
     sale: 20,
     decription: "A Rubik's cube is more than just a toy. It is a tool for learning, improving and having fun. It can help you develop your cognitive abilities, your concentration, your patience and your confidence."
   }
-]
+];
