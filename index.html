@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubic Shop</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- icon -->
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+    <!-- normalize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+</head>
+    
+<body>
+    <div class="shop">
+        <header class="header">
+            <nav class="header__block">
+                <div class="header__logo">
+                    <span> <img class="header__logo-img" src="./assets/img/cube2.png" alt="logo-img"> </span>
+                    <div class="header__logo--strong-text">THE RUBIK SHOP</div>
+                </div>
+
+                <div class="header__search">
+                    <div class="header__search-block">
+                        <div class="header__search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input class="header__search-input" type="text" placeholder="Search here">
+                    </div>
+                </div>
+
+                
+                <a href="#" class="header__cart-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+
+                <div class="header__logging">
+                    <div class="header__logging--log-in">
+                        <a href="" class="header__logging--link">Log in</a>
+                    </div>
+                    <div class="header__logging--separation"></div>
+                    <div class="header__logging--sign-up">
+                        <a href="" class="header__logging--link">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="grid">
+            <div class="banner-container">
+                <button type="submit" class="btn-subcribe">Subcribe</button>
+            </div>
+        
+            <div class="list-tool">
+                <div class="list-tool__item list-tool__item--advanced-filter">
+                    Filter
+                </div>
+                <div class="list-tool__item list-tool__item--classic-filter">
+                    Classic
+                </div>
+                <div class="list-tool__item list-tool__item--variant-filter">
+                    Variant
+                </div>
+                <div class="list-tool__item list-tool__item--acsr-filter">
+                    Accessories
+                </div>
+            </div>
+
+            <ul class="list-product"></ul>
+            <footer class="footer">
+            </footer>
+        </div>
+    </div>
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

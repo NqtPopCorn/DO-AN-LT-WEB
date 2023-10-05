@@ -1,0 +1,40 @@
+:root {
+    --white-color: #fff;
+    --black-color:#000;
+    --text-color: #333;
+    --black-blue-color: #1C1C39;
+    --pink-color: #d4b0b5;
+    --blue-color: #2638ce;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    /* 16px */
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;    
+    /* can giua */
+    margin: 0 auto;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
