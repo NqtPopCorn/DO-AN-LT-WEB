@@ -19,7 +19,7 @@
     
 <body>
     <div class="shop">
-        <header class="header">
+        <div class="header">
             <nav class="header__block">
                 <div class="header__logo">
                     <span> <img class="header__logo-img" src="./assets/img/cube2.png" alt="logo-img"> </span>
@@ -50,11 +50,11 @@
                     </div>
                 </div>
             </nav>
-        </header>
+        </div>
         
-        <div class="grid">
-            <div class="banner-container">
-                <button type="submit" class="btn-subcribe">Subcribe</button>
+        <div class="grid-body grid">
+            <div class="banner">
+                <button type="submit" class="banner__btn-subcribe">Subcribe</button>
             </div>
         
             <div class="list-tool">
@@ -73,11 +73,18 @@
             </div>
 
             <ul class="list-product"></ul>
-            
-            <footer class="footer">
-            </footer>
+            <div class="product-detail"></div>
+
+            <div class="goto-btn" title="Go to top">
+                <i class="fa-solid fa-circle-arrow-up"></i>
+            </div>
         </div>
+
+        <footer class="footer">
+            
+        </footer>
     </div>
+    
     <script type="module" src="./assets/js/data.js"></script>
     <script type="module" src="./assets/js/main.js"></script>
 </body>
