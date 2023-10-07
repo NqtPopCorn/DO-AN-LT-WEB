@@ -90,6 +90,7 @@
     font-size: 1.8rem;
     align-items: center;
     text-align: center;
+    margin-right: 4px;
 }
 
 .header__logging--log-in {
@@ -306,6 +307,12 @@
         width: 90px;
         height: 36px;
         font-size: 1.6rem;
+    }
+    .header__search, .header__cart-link, .header__logging {
+        font-size: 1.5rem;
+    }
+    .header__logo {
+        font-size: 1.6rem !important;
     }
 }
 
