@@ -1,26 +1,46 @@
-import {productList} from '../js/data.js';
 
+//get product data
+export let products = null;
+let shop = null;
 
-let listProduct = document.querySelector(".list-product");
-productList.forEach(product => {
-    console.log(product);
-    
-    let newProduct = document.createElement('li');
-    newProduct.classList.add("list-product__item");
-    let productBlock = document.createElement('div');
-    productBlock.classList.add("list-product__item__block");
-
-    productBlock.style.backgroundImage = `url('${product.image}')`;
-    newProduct.appendChild(productBlock);
-    productBlock.innerHTML = `
-        <div class="list-product__item-price">$${product.price}</div>
-        <h2 class="list-product__item-name">${product.name}</h2>
-    `;
-    listProduct.appendChild(newProduct);
+fetch('../assets/js/products_data.json')
+.then(response => response.json())
+.then(data => {
+    products = data.products;
+    addToHTML();
+})
+.catch(error => {
+    console.log("Error: " + error);
 });
+
+function addToHTML() {
+    let listProduct = document.querySelector(".list-product");
+    products.forEach(product => {
+        let newProduct = document.createElement('li');
+        newProduct.classList.add("list-product__item");
+
+        // newProduct.style.backgroundImage = `url('../assets/img/1.png')`;
+        fetch(product.images[0].src)
+        .then(response => response.url)
+        .then(img => {
+            newProduct.style.backgroundImage = `url('${img}')`;
+        })
+        .catch(() => {
+            newProduct.style.backgroundImage = `url('../assets/img/1.png')`;
+        })
+        
+        newProduct.innerHTML = `
+            <div class="list-product__item-price">${product.variants[0].price}₫</div>
+            <h2 class="list-product__item-name">${product.title}</h2>
+        `;
+        listProduct.appendChild(newProduct);
+    });
+}
+
 
 
 // to the top, to the bottom buttons
+//
 let btn = document.querySelector('.goto-btn');
 window.onscroll = function() {
     if (document.documentElement.scrollTop > 100) {
@@ -28,10 +48,10 @@ window.onscroll = function() {
         btn.onclick = topFunction;
     } else {
         btn.style.transform = 'rotate(180deg)';
+        btn.title = "Go to bottom";
         btn.onclick = botFunction;
     }
 };
-
 
 function topFunction() {
     document.body.scrollTop = 0;
