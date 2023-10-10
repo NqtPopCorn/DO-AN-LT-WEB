@@ -109,7 +109,7 @@
 
 /* banner */
 .banner {
-    background-image: url("../img/cube2.png");
+    background-image: url("https://speedcubeshop.com/cdn/shop/files/Halloween-2023-25_-off-desktop_2160x.progressive.png.jpg?v=1696021455");
     background-size: cover;
     background-position: 50% 50%;
     position: relative;
@@ -178,10 +178,12 @@
     padding: 0;
     list-style: none;
     display: grid;
+    justify-content: start;
+    align-content: start;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     position: relative;
-    min-height: 300px;
+    height: calc(280px * 2 + 1 * 20px);
 }
 
 .list-product__item {
@@ -194,6 +196,7 @@
     position: relative;
     z-index: 1;
     border-radius: 5px;
+    
 }
 
 .list-product__item-price {
@@ -209,6 +212,8 @@
     font-weight: bold;
     background-color: var(--black-color);
     color: var(--white-color);
+    cursor: pointer;
+    user-select: none;
 }
 
 .list-product__item-name {
@@ -226,6 +231,7 @@
     background-color: var(--black-color);
     color: var(--white-color);
     border-radius: 0 10px 0 0;
+    cursor: pointer;
 }
 
 .list-product__item-detail {
@@ -238,7 +244,7 @@
 
 /* pagination */
 .pagination {
-    margin: 30px 0;
+    margin: 10px 0;
     font-size: 2rem;
     width: 100%;
     height: 30px;
@@ -246,35 +252,36 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-top: 1px solid var(--black-blue-color);
-    border-bottom: 1px solid var(--black-blue-color);
+    
 }
 
 .pagination__list {
-    margin: 30px 0;
     font-size: 2rem;
-    width: 20%;
-    height: 30px;
+    width: fit-content;height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .pagination__icon {
-    
+    margin: 0 10px;
+    height: 90%;
+    text-align: center;
+    line-height: 30px;
+    background-color: unset;
+    border-radius: 4px;
 }
 
 .pagination__item {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30%; height: 90%;
+    width: 40px; height: 90%;
     cursor: pointer;
     user-select: none;
     text-decoration: none;
     border-radius: 4px;
-    margin: 2px;
+    margin: 0;
 }
 
 .pagination__list > .active {
@@ -286,9 +293,13 @@
     background-color: rgba(255, 255, 255, 0.286);
 }
 
-.pagination__list > .disable {
+.pagination__icon:hover:not(.disable) {
+    color: var(--ocean-color);
+    cursor: pointer;
+}
+
+.pagination > .disable {
     opacity: 0.2;
-    cursor: default;
 }
 
 /* go to top, to bottom button */
