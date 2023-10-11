@@ -1,11 +1,19 @@
+import {renderToHTML} from "./renderToHTML.js";
 
-
-// file nay de: 
-// 1. phan trang trang chu(home)
+// file nay thuc hien: 
+// 1. render trang chu(home) co phan trang san pham
 // 2. xu ly tim kiem
 // 3. xu ly go to top, bottom button
 //
 //
+
+//khoi tao trang chu
+fetch('../assets/js/products_data.json')
+.then(response => response.json())
+.then(data => {
+    products = data.products;
+    renderToHTML(products);
+})
 
 //xu ly tim kiem
 let products = [];
@@ -27,7 +35,7 @@ btn.addEventListener('click', e => {
         renderToHTML(results);
     })
 });
-//submit khi nhan enter
+//submit search input khi nhan enter
 let search_input = document.getElementById('search');
 search_input.addEventListener('keypress', e => {
     if(e.key == "Enter") {
@@ -36,128 +44,6 @@ search_input.addEventListener('keypress', e => {
     }
 })
 
-
-//
-//phan trang trang chu home
-fetch('../assets/js/products_data.json')
-.then(response => response.json())
-.then(data => {
-    products = data.products;
-    renderToHTML(products);
-})
-
-//xu ly
-//products_data.json have 30 product
-let limitItems, totalPage, limitPageInList = 3, current_page = 0, previous_page = 0;
-let listProduct = document.querySelector(".list-product");
-
-function renderToHTML(products) {
-    limitItems = 8;
-    totalPage = Math.ceil(products.length/ limitItems);
-    renderPage(1, products);
-    renderPagination(products);
-}
-
-function renderProduct(product) {
-    let newProduct = document.createElement('li');
-    newProduct.classList.add("list-product__item");
-    
-    fetch(product.images[0].src)
-    .then(function (response) {
-        if(response.ok) return response.url; //img url
-        else return '../assets/img/1.png'; //defaut img url
-    })
-    .then(img => {
-        newProduct.style.backgroundImage = `url('${img}'), linear-gradient(0,white,white)`;
-    })
-    
-    newProduct.innerHTML = `
-        <div class="list-product__item-price">$${product.variants[0].price}</div>
-        <h2 class="list-product__item-name">${product.title}</h2>
-    `;
-    return newProduct;
-}
-
-function renderPage(page = 1, products) {
-    listProduct.innerHTML = '';
-    for(let i = (page-1) * limitItems; i < products.length; i++) {
-        //neu render du mot trang roi thi dung
-        if(parseInt(i / limitItems) > page - 1) {
-            break;
-        }
-        else {
-            let newProduct = renderProduct(products[i]);
-            listProduct.appendChild(newProduct);
-        }
-    }
-    previous_page = current_page;
-    current_page = page;
-
-    controlPaginIconDisplay();
-}
-//****** chua limit so trang
-function renderPagination(products) {
-    let paginList = document.querySelector('.pagination__list');
-    paginList.innerHTML = '';
-    for(let i = 1; i <= totalPage; i++) {
-        let newPagin = document.createElement('a');
-        if(i === 1) newPagin.classList.add('active');
-        newPagin.classList.add('pagination__item');
-        newPagin.innerHTML = i;
-        newPagin.addEventListener('click', e => {
-            if(!e.target.classList.contains('active')) {
-                renderPage(Number(e.target.innerText), products);
-                let activedPagin = paginList.querySelector(".pagination__item.active");
-                activedPagin.classList.remove('active');
-                e.target.classList.add('active');
-            }
-        });
-        paginList.appendChild(newPagin);
-    }
-}
-
-function controlPaginIconDisplay() {
-    //left arrow icon
-    let leftIcon = document.querySelector('.pagination__icon--left');
-    if(current_page == 1) 
-    {
-        leftIcon.classList.add('disable');
-        removeEventListener('click', handleLeftPaginEvent);
-    }
-    else 
-    {
-        leftIcon.classList.remove('disable');
-        leftIcon.addEventListener('click', handleLeftPaginEvent);
-    }
-    //right arrow icon
-    let rightIcon = document.querySelector('.pagination__icon--right');
-    if(current_page == totalPage) 
-    {
-        rightIcon.classList.add('disable');
-        rightIcon.removeEventListener('click', handleRightPaginEvent);
-    }
-    else 
-    {
-        rightIcon.classList.remove('disable');
-        rightIcon.addEventListener('click', handleRightPaginEvent);
-    }
-}
-
-function handleLeftPaginEvent(e) {
-    let activedPagin = document.querySelector('.pagination__item.active');
-    let leftIcon = e.target;
-    if(!leftIcon.classList.contains('disable')) {
-        activedPagin.previousSibling.click();
-    }
-}
-
-function handleRightPaginEvent(e) {
-    let activedPagin = document.querySelector('.pagination__item.active');
-    let rightIcon = e.target;
-    if(!rightIcon.classList.contains('disable')) {
-        activedPagin.nextSibling.click();  
-    }
-}
 
 
 // to the top, to the bottom buttons
