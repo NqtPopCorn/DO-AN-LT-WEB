@@ -22,7 +22,7 @@
 
 .header {
     display: grid;
-    grid-template-columns: 2fr 5fr 1fr 2fr;
+    grid-template-columns: 2fr 5fr 0.6fr 2fr;
     gap: 10px;
     align-items: center;
     height: inherit;
@@ -55,15 +55,22 @@
 }
 
 .header__search-icon {
-    margin: 5px;
+    width: 6%;
+    min-width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 0 0 20px;
 }
 
 .header__search-input {
     width: 100%;
     height: 100%;
+    min-width: 60px;
     border-radius: 20px;
     border-style: none;
-    background-color: antiquewhite;
+    background-color: antiquewhite !important;
     outline: none;
 }
 
@@ -182,8 +189,6 @@
     align-content: start;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
-    position: relative;
-    height: calc(280px * 2 + 1 * 20px);
 }
 
 .list-product__item {
@@ -196,7 +201,9 @@
     position: relative;
     z-index: 1;
     border-radius: 5px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .list-product__item-price {
@@ -218,7 +225,7 @@
 
 .list-product__item-name {
     margin: 0;
-    width: 70%; height: 24%;
+    width: 74%; height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -226,8 +233,6 @@
     text-align: center;
     font-size: 1.8rem;
     line-height: 2rem;
-    position: absolute;
-    bottom: 0;
     background-color: var(--black-color);
     color: var(--white-color);
     border-radius: 0 10px 0 0;
@@ -284,12 +289,12 @@
     margin: 0;
 }
 
-.pagination__list > .active {
+.pagination__item.active {
     background-color: #00b3ff;
     color: white;
 }
 
-.pagination__list a:hover:not(.active) {
+.pagination__item:hover:not(.active) {
     background-color: rgba(255, 255, 255, 0.286);
 }
 
@@ -298,7 +303,7 @@
     cursor: pointer;
 }
 
-.pagination > .disable {
+.pagination__icon.disable {
     opacity: 0.2;
 }
 
@@ -322,7 +327,7 @@
 .footer {
     display: block;
     width: 100%;
-    height: 400px;
+    height: 260px;
     border: solid;
 }
 

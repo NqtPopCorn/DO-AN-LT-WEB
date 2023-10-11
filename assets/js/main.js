@@ -31,11 +31,13 @@ btn.addEventListener('click', e => {
 let search_input = document.getElementById('search');
 search_input.addEventListener('keypress', e => {
     if(e.key == "Enter") {
-        e.preventDefault();
+        e.preventDefault();//?
         btn.click();
     }
 })
 
+
+//
 //phan trang trang chu home
 fetch('../assets/js/products_data.json')
 .then(response => response.json())
@@ -44,6 +46,7 @@ fetch('../assets/js/products_data.json')
     renderToHTML(products);
 })
 
+//xu ly
 //products_data.json have 30 product
 let limitItems, totalPage, limitPageInList = 3, current_page = 0, previous_page = 0;
 let listProduct = document.querySelector(".list-product");
@@ -102,10 +105,12 @@ function renderPagination(products) {
         newPagin.classList.add('pagination__item');
         newPagin.innerHTML = i;
         newPagin.addEventListener('click', e => {
-            renderPage(Number(e.target.innerText), products);
-            let allPagin = paginList.querySelectorAll(".pagination__item");
-            allPagin[previous_page -1].classList.remove('active');
-            e.target.classList.add('active');
+            if(!e.target.classList.contains('active')) {
+                renderPage(Number(e.target.innerText), products);
+                let activedPagin = paginList.querySelector(".pagination__item.active");
+                activedPagin.classList.remove('active');
+                e.target.classList.add('active');
+            }
         });
         paginList.appendChild(newPagin);
     }
@@ -117,40 +122,40 @@ function controlPaginIconDisplay() {
     if(current_page == 1) 
     {
         leftIcon.classList.add('disable');
-        removeEventListener('click', handlePaginLeftEvent);
+        removeEventListener('click', handleLeftPaginEvent);
     }
     else 
     {
         leftIcon.classList.remove('disable');
-        leftIcon.addEventListener('click', handlePaginLeftEvent);
+        leftIcon.addEventListener('click', handleLeftPaginEvent);
     }
     //right arrow icon
     let rightIcon = document.querySelector('.pagination__icon--right');
     if(current_page == totalPage) 
     {
         rightIcon.classList.add('disable');
-        rightIcon.removeEventListener('click', handlePaginRightEvent);
+        rightIcon.removeEventListener('click', handleRightPaginEvent);
     }
     else 
     {
         rightIcon.classList.remove('disable');
-        rightIcon.addEventListener('click', handlePaginRightEvent);
+        rightIcon.addEventListener('click', handleRightPaginEvent);
     }
 }
 
-function handlePaginLeftEvent(e) {
-    let allPagin = document.querySelectorAll(".pagination__item");
+function handleLeftPaginEvent(e) {
+    let activedPagin = document.querySelector('.pagination__item.active');
     let leftIcon = e.target;
     if(!leftIcon.classList.contains('disable')) {
-        allPagin[current_page - 1 -1].click();
+        activedPagin.previousSibling.click();
     }
 }
 
-function handlePaginRightEvent(e) {
-    let allPagin = document.querySelectorAll(".pagination__item");
+function handleRightPaginEvent(e) {
+    let activedPagin = document.querySelector('.pagination__item.active');
     let rightIcon = e.target;
     if(!rightIcon.classList.contains('disable')) {
-        allPagin[current_page - 1 + 1].click();  
+        activedPagin.nextSibling.click();  
     }
 }
 
