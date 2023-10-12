@@ -1,0 +1,130 @@
+/* product detail */
+.product-detail {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+}
+
+.product-detail__layout {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    z-index: 4;
+}
+
+.product-detail__body {
+    width: 870px;
+    max-width: 70%;
+    height: 420px;
+    margin: auto;
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    z-index: 5;
+}
+
+.product-detail__image {
+    width: 40%;
+    height: 100%;
+    background-image: url("/assets/img/1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #e1f3fe;
+    border-radius: inherit;
+}
+
+.product-detail__container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #e1f3fe;
+    border-radius: inherit;
+}
+
+.product-name {
+    width: 100%;
+    height: 60px;
+    font-size: 2.6rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-info {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.product-info__table {
+    width: 90%;
+    height: 64px;
+    margin: 16px auto;
+    flex: 1;
+}
+.product-info__table, .product-info__table th, .product-info__table td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.product-info__price {
+    color: red;
+}
+.product-info__decription {
+    margin-top: 10px;
+    width: 90%;
+    height: 36%;
+}
+
+.product-detail__cart {
+    width: 100%;
+    flex: 1;
+    position: relative;
+}
+
+.detail-cart-button {
+    width: 120px;
+    position: absolute;
+    top: 12px;
+    right: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc3af;
+    border: 2px solid;
+    border-radius: 14px;
+    padding: 4px;
+}
+
+.cart__icon {
+    font-size: 3rem;
+}
+
+.exit-detail-button {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    top: 0;
+    right: 0;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.exit-detail-button:hover {
+    color: red;
+}

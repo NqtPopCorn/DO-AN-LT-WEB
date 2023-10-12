@@ -2,6 +2,7 @@
 @import url("./header.css");
 @import url("./listProduct.css");
 @import url("./pagination.css");
+@import url("./productDetail.css");
 
 .shop {
     margin: 0;
@@ -74,8 +75,6 @@
     grid-column: 5 / 6;
 }
 
-
-
 /* go to top, to bottom button */
 .goto-btn {
     background-color: rgb(255, 215, 219);
@@ -92,32 +91,7 @@
     transition: 0.15s ease-in;
 }
 
-.product-detail {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-}
 
-.product-detail__layout {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: absolute;
-    z-index: 4;
-}
-
-.product-detail__body {
-    width: 500px;
-    height: 500px;
-    margin: auto;
-    background-color: white;
-    position: relative;
-    z-index: 5;
-}
 
 /* footer */
 .footer {

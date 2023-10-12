@@ -1,4 +1,4 @@
-import {renderToHTML} from "./renderToHTML.js";
+import {renderToHTML} from "./renderProduct.js";
 
 // file nay thuc hien: 
 // 1. render trang chu(home) co phan trang san pham
@@ -26,12 +26,9 @@ btn.addEventListener('click', e => {
         let input = document.getElementById('search').value;
         products = data.products;
         results = [];
-        products.forEach(product => {
-            if(product.title.indexOf(input) >= 0) 
-            {
-                results.push(product);
-            }
-        })
+        results = products.filter(product => {
+            return product.title.indexOf(input) >= 0;
+        });
         renderToHTML(results);
     })
 });
@@ -44,6 +41,13 @@ search_input.addEventListener('keypress', e => {
     }
 })
 
+
+//detail
+let detail = document.querySelector('.product-detail');
+let detail_layout = document.querySelector(".product-detail__layout");
+detail_layout.addEventListener('click', e => {
+    detail.style.display = 'none';
+})
 
 
 // to the top, to the bottom buttons
@@ -72,3 +76,10 @@ function botFunction() {
     document.body.scrollTop = document.body.scrollHeight;
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
 }
+
+
+//
+let exitDetailButton = document.querySelector(".exit-detail-button");
+exitDetailButton.addEventListener("click", e => {
+    document.querySelector(".product-detail").style.display = "none";
+});

@@ -28,14 +28,17 @@ export function renderToHTML(products) {
 function renderProduct(product) {
     let newProduct = document.createElement('li');
     newProduct.classList.add("list-product__item");
-    
+    newProduct.addEventListener('click', e => {
+        document.querySelector(".product-detail").style.display = "flex";
+    });
+
     fetch(product.images[0].src)
     .then(function (response) {
         if(response.ok) return response.url; //img url
         else return '../assets/img/1.png'; //defaut img url
     })
     .then(img => {
-        newProduct.style.backgroundImage = `url('${img}'), linear-gradient(0,white,white)`;
+        newProduct.style.backgroundImage = `url('${img}')`;
     })
     
     newProduct.innerHTML = `

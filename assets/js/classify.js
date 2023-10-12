@@ -8,11 +8,8 @@ fetch('../assets/js/products_data.json')
 .then(response => response.json())
 .then(data => {
     products = data.products;
-    products.forEach(product => {
-        product.tags.forEach(tag => {
-            if(tagMap.has(tag)) tagMap.set(tag, tagMap.get(tag) + 1);
-            else tagMap.set(tag, 1);
-        });
+    let results = products.filter(product => {
+        return product.product_type.indexOf("3x3") >= 0;
     })
+    console.log(results);
 })
-console.log(tagMap);
