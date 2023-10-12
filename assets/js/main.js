@@ -7,13 +7,21 @@ import {renderToHTML} from "./renderProduct.js";
 //
 //
 
-//khoi tao trang chu
-fetch('../assets/js/products_data.json')
-.then(response => response.json())
-.then(data => {
-    products = data.products;
-    renderToHTML(products);
-})
+function khoitaoTrangChu() {
+    //khoi tao trang chu
+    fetch('../assets/js/products_data.json')
+    .then(response => response.json())
+    .then(data => {
+        products = data.products;
+        renderToHTML(products);
+    })
+};
+khoitaoTrangChu();
+
+let homeBtn = document.querySelector(".header__home");
+homeBtn.addEventListener('click', e => {
+    khoitaoTrangChu();
+});
 
 //xu ly tim kiem
 let products = [];
@@ -49,7 +57,6 @@ detail_layout.addEventListener('click', e => {
     detail.style.display = 'none';
 })
 
-
 // to the top, to the bottom buttons
 //
 let gotoBtn = document.querySelector('.goto-btn');
@@ -81,5 +88,5 @@ function botFunction() {
 //
 let exitDetailButton = document.querySelector(".exit-detail-button");
 exitDetailButton.addEventListener("click", e => {
-    document.querySelector(".product-detail").style.display = "none";
+    document.querySelector(".product-detail").style.display = "none ";
 });

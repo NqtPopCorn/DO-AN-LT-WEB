@@ -16,7 +16,7 @@
     background-repeat: no-repeat;
     background-origin: border-box;
     background-color: var(--white-color);
-    border: solid;
+    border: 3px solid;
     background-position: 50% 50%;
     position: relative;
     z-index: 1;
@@ -39,7 +39,6 @@
     font-weight: bold;
     background-color: var(--black-color);
     color: var(--white-color);
-    cursor: pointer;
     user-select: none;
 }
 
@@ -56,7 +55,7 @@
     background-color: var(--black-color);
     color: var(--white-color);
     border-radius: 0 10px 0 0;
-    cursor: pointer;
+    cursor: default;
 }
 
 .list-product__item-detail {

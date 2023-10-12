@@ -5,14 +5,13 @@
     position: sticky;
     top: 0;
     font-size: 1.6rem;
-    box-shadow: 0 10px 100px rgba(154, 254, 132, 0.599);
     z-index: 2;
     width: 100%; height: 50px;
 }
 
 .header-body {
     display: grid;
-    grid-template-columns: 2fr 5fr 0.6fr 2fr;
+    grid-template-columns: 1.6fr 0.3fr 5.4fr 0.4fr 1.8fr;
     gap: 10px;
     align-items: center;
     height: inherit;
@@ -33,6 +32,15 @@
     height: 28px;
 }
 
+.header__home {
+    font-size: 2.3rem;
+    cursor: pointer;
+}
+
+.header__home:hover{
+    color: rgb(1, 107, 255);
+}
+
 .header__search {
     height: 60%;
     display: inline-flex;
@@ -43,6 +51,7 @@
 }
 
 .header__search-icon {
+    cursor: pointer;
     width: 6%;
     min-width: 30px;
     height: 100%;
@@ -50,6 +59,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 20px 0 0 20px;
+    font-size: 1.6rem;
+}
+
+.header__search-icon:hover{
+    font-size: 1.7rem;
 }
 
 .header__search-input {
@@ -62,8 +76,8 @@
     outline: none;
 }
 
-
 .header__cart {
+    cursor: pointer;
     font-size: 2.5rem;
     color: var(--black-color);
     text-decoration: none;
@@ -72,32 +86,28 @@
     align-items: center;
 }
 
+.header__cart:hover {
+    color: rgb(1, 107, 255);
+}
+
 .header__logging {
     display: grid;
     grid-template-columns: 9fr 2fr 9fr;
     gap: 5px;
     font-size: 1.8rem;
     align-items: center;
-    text-align: center;
-    margin-right: 4px;
 }
 
-.header__logging--log-in {
-
+.header__logging--log-in, .header__logging--sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
-
 .header__logging--separation {
     display: block;
     width: 1px;
     height: 1.8rem;
     background-color: rgba(0, 0, 0, 0.342);
     margin-left: 8px;
-}
-
-.header__logging--sign-up {     
-    
-}
-
-.header__logging--link {
-    text-decoration: none;
 }

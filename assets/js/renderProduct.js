@@ -12,7 +12,7 @@ let paginList = document.querySelector('.pagination__list');
 export function renderToHTML(products) {
     current_page = 0;
     previous_page = 0
-    limitItems = 8;
+    limitItems = 12;
     totalPage = Math.ceil(products.length/ limitItems);
     if(totalPage != 0) {
         renderPage(1, products);

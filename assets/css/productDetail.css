@@ -74,7 +74,7 @@
 .product-info__table {
     width: 90%;
     height: 64px;
-    margin: 16px auto;
+    margin: 10px auto;
     flex: 1;
 }
 .product-info__table, .product-info__table th, .product-info__table td {
@@ -86,9 +86,11 @@
     color: red;
 }
 .product-info__decription {
-    margin-top: 10px;
     width: 90%;
     height: 36%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-detail__cart {
@@ -100,8 +102,8 @@
 .detail-cart-button {
     width: 120px;
     position: absolute;
-    top: 12px;
-    right: 36px;
+    top: 10px;
+    right: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
