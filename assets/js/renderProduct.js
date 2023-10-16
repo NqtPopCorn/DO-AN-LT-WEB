@@ -39,12 +39,33 @@ function renderProduct(product) {
     })
     .then(img => {
         newProduct.style.backgroundImage = `url('${img}')`;
+        newProduct.innerHTML = `
+            <div class="list-product__item-price">$${product.variants[0].price}</div>
+            <h2 class="list-product__item-name">${product.title}</h2>
+        `;
+
+        //product detail
+        newProduct.addEventListener("click", e => {
+            let pubDate = new Date(product.published_at);
+            let imgDetail = document.querySelector(".detail-img");  
+            imgDetail.style.backgroundImage = `url('${img}')`;
+            let name = document.querySelector(".product-name");
+            name.innerHTML = product.title;
+            let row = document.querySelector(".detail-table__row");
+            row.innerHTML = `
+                <td>${product.vendor}</td>
+                <td>${pubDate.getDate()+1}/${pubDate.getMonth()}/${pubDate.getFullYear()}</td>
+                <td>${product.product_type}</td>
+                <td class="product-info__price">$${product.variants[0].price}</td>
+            `;
+            let decription = document.querySelector(".product-info__decription");
+            decription.innerHTML = product.title + " decription";
+        });
     })
     
-    newProduct.innerHTML = `
-        <div class="list-product__item-price">$${product.variants[0].price}</div>
-        <h2 class="list-product__item-name">${product.title}</h2>
-    `;
+    
+
+    
     return newProduct;
 }
 

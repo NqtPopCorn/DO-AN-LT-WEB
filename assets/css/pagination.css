@@ -20,12 +20,22 @@
 }
 
 .pagination__icon {
-    margin: 0 10px;
+    width: 40px;
     height: 90%;
     text-align: center;
     line-height: 30px;
     background-color: unset;
     border-radius: 4px;
+}
+
+.pagination__icon:hover:not(.disable) {
+    color: var(--ocean-color);
+    background-color: rgba(255, 255, 255, 0.286);
+    cursor: pointer;
+}
+
+.pagination__icon.disable {
+    opacity: 0.2;
 }
 
 .pagination__item {
@@ -49,11 +59,3 @@
     background-color: rgba(255, 255, 255, 0.286);
 }
 
-.pagination__icon:hover:not(.disable) {
-    color: var(--ocean-color);
-    cursor: pointer;
-}
-
-.pagination__icon.disable {
-    opacity: 0.2;
-}

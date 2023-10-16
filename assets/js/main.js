@@ -49,7 +49,6 @@ search_input.addEventListener('keypress', e => {
     }
 })
 
-
 //detail
 let detail = document.querySelector('.product-detail');
 let detail_layout = document.querySelector(".product-detail__layout");
