@@ -9,7 +9,7 @@ import {renderToHTML} from "./renderProduct.js";
 
 function khoitaoTrangChu() {
     //khoi tao trang chu
-    fetch('../assets/js/products_data.json')
+    fetch('https://speedcubeshop.com/products.json')
     .then(response => response.json())
     .then(data => {
         products = data.products;
@@ -28,7 +28,7 @@ let products = [];
 let btn = document.querySelector('.header__search-icon');
 let results = [];
 btn.addEventListener('click', e => {
-    fetch('../assets/js/products_data.json')
+    fetch('https://speedcubeshop.com/products.json')
     .then(response => response.json())
     .then(data => {
         let input = document.getElementById('search').value;
