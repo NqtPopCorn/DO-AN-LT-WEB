@@ -1,59 +1,32 @@
-import {renderToHTML} from "./renderProduct.js";
+import {renderToHTML} from "./renderToMainList.js";
+import { productList } from "./data.js";
 
 // file nay thuc hien: 
 // 1. render trang chu(home) co phan trang san pham
 // 2. xu ly tim kiem
 // 3. xu ly go to top, bottom button
+// 4. home btn
 //
-//
+
 //tao trang chu
 //
 //
+let products = productList;
 function khoitaoTrangChu() {
     //khoi tao trang chu
-    fetch('../assets/js/products_data.json')
-    .then(response => response.json())
-    .then(data => {
-        products = data.products;
-        renderToHTML(products);
-    })
+    renderToHTML(products);
 };
 khoitaoTrangChu();
 //home button
 let homeBtn = document.querySelector(".header__home");
 homeBtn.addEventListener('click', e => {
+    let classifyBtn = document.querySelector(".classifier__item.onUse");
+    if(classifyBtn) classifyBtn.classList.remove("onUse");
     khoitaoTrangChu();
 });
 
 
-//xu ly tim kiem
-//
-//
-let products = [];
-let btn = document.querySelector('.header__search-icon');
-let results = [];
-btn.addEventListener('click', e => {
-    fetch('../assets/js/products_data.json')
-    .then(response => response.json())
-    .then(data => {
-        let input = document.getElementById('search').value;
-        let inputRegex = new RegExp(input, 'i');
-        products = data.products;
-        results = [];
-        results = products.filter(product => {
-            return product.title.search(inputRegex) >= 0;
-        });
-        renderToHTML(results);
-    })
-});
-//submit search input khi nhan enter
-let search_input = document.getElementById('search');
-search_input.addEventListener('keypress', e => {
-    if(e.key == "Enter") {
-        e.preventDefault();//?
-        btn.click();
-    }
-})
+
 
 
 //detail
@@ -62,8 +35,15 @@ search_input.addEventListener('keypress', e => {
 let detail = document.querySelector('.product-detail');
 let detail_layout = document.querySelector(".product-detail__layout");
 detail_layout.addEventListener('click', e => {
+    //set to default
+    detail.style.zIndex = 30;
+    document.querySelector(".product-detail__body").style.zIndex = 40;
     detail.style.display = 'none';
-})
+});
+let exitDetailButton = document.querySelector(".detail-exit-button");
+exitDetailButton.addEventListener("click", e => {
+    document.querySelector(".product-detail").style.display = "none ";
+});
 
 
 // to the top, to the bottom buttons
@@ -71,7 +51,7 @@ detail_layout.addEventListener('click', e => {
 //
 let gotoBtn = document.querySelector('.goto-btn');
 gotoBtn.style.transform = 'rotate(180deg)';
-gotoBtn.title = "Go to bottom";
+gotoBtn.name = "Go to bottom";
 gotoBtn.onclick = botFunction;
 
 window.addEventListener("scroll", function() {
@@ -80,7 +60,7 @@ window.addEventListener("scroll", function() {
         gotoBtn.onclick = topFunction;
     } else {
         gotoBtn.style.transform = 'rotate(180deg)';
-        gotoBtn.title = "Go to bottom";
+        gotoBtn.name = "Go to bottom";
         gotoBtn.onclick = botFunction;
     }
 });
@@ -95,11 +75,3 @@ function botFunction() {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
 }
 
-
-//detail
-//
-//
-let exitDetailButton = document.querySelector(".detail-exit-button");
-exitDetailButton.addEventListener("click", e => {
-    document.querySelector(".product-detail").style.display = "none ";
-});

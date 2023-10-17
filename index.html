@@ -33,10 +33,11 @@
                     <div class="header__search-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <input id="search" class="header__search-input" type="text" placeholder="Search here...">
+                    <input id="search" class="header__search-input" type="text" placeholder="Search here..." autocomplete="off"/>
+                    <div class="search-recommend"></div>
                     
                 </div>
-
+                <div class="search-layout"></div>
                 
                 <div class="header__cart">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -118,8 +119,16 @@
             </div>
         </div>
     </div>
+
+    <div class="filter-box">
+        <div class="box-layout"></div>
+        <div class="filter-content">
+
+        </div>
+    </div>
     
     <script type="module" src="./assets/js/classify.js"></script>
     <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/search.js"></script>
 </body>
 </html>

@@ -4,11 +4,6 @@
 @import url("./pagination.css");
 @import url("./productDetail.css");
 
-.shop {
-    margin: 0;
-    width: 100%;
-    background-image: linear-gradient(90deg, #B7C6F4, #EADBFF);
-}
 
 /* banner */
 .banner {
@@ -73,6 +68,10 @@
 
 .classifier__item--classic-filter {
     grid-column: 5 / 6;
+}
+
+.onUse {
+    background-color: var(--black-blue-hover-color);
 }
 
 /* go to top, to bottom button */

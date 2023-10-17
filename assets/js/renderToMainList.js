@@ -26,64 +26,23 @@ export function renderToHTML(products) {
 }
 
 function renderProduct(product) {
-    let newProduct = document.createElement('li');
-    newProduct.classList.add("list-product__item");
-    newProduct.addEventListener('click', e => {
+    let htmlProduct = document.createElement('li');
+    htmlProduct.classList.add("list-product__item");
+
+    htmlProduct.style.backgroundImage = `url('${product.imagePrimary}')`;
+    htmlProduct.innerHTML = `
+        <div class="list-product__item-price">$${product.salePrice ? product.salePrice : product.prePrice}</div>
+        <h2 class="list-product__item-name">${product.name}</h2>
+    `;
+
+    //click to show detail
+    htmlProduct.addEventListener("click", e => {
         document.querySelector(".product-detail").style.display = "flex";
-    });
-
-    fetch(product.images[0].src)
-    .then(function (response) {
-        if(response.ok) return response.url; //img url
-        else return '../assets/img/1.png'; //defaut img url
+        document.querySelector(".detail-img").style.backgroundImage = `url(${product.imagePrimary})`;
+        document.querySelector(".product-name").innerHTML = product.name;
+        document.querySelector(".product-info__decription ").innerHTML = product.desc;
     })
-    .then(img => {
-        newProduct.style.backgroundImage = `url('${img}')`;
-        newProduct.innerHTML = `
-            <div class="list-product__item-price">$${product.variants[0].price}</div>
-            <h2 class="list-product__item-name">${product.title}</h2>
-        `;
-
-        //product detail
-        newProduct.addEventListener("click", e => {
-            let pubDate = new Date(product.published_at);
-            document.querySelector(".detail-img").style.backgroundImage = `url('${img}')`;
-
-            //create table
-            let detailAttr = `
-                <th>Vendor</th>
-                <th>Published at</th>
-                <th>Product type</th>
-                <th>Price</th>
-            `;
-            let versionIndex = product.title.indexOf("(");
-            if( versionIndex >=0 ) {
-                document.querySelector(".product-name").innerHTML = product.title.substring(0, versionIndex);
-                detailAttr += `<th>Version</th>`;
-            }
-            else {
-                document.querySelector(".product-name").innerHTML = product.title;
-            }
-            document.querySelector(".detail-attribute").innerHTML = detailAttr;
-
-            let rowValue = `
-                <td>${product.vendor}</td>
-                <td>${pubDate.getDate()+1}/${pubDate.getMonth()}/${pubDate.getFullYear()}</td>
-                <td>${product.product_type}</td>
-                <td class="product-info__price">$${product.variants[0].price}</td>
-            `;
-            if( versionIndex >=0 ) rowValue += `<td>${product.title.substring(versionIndex+1,product.title.indexOf(")"))}</td>`;
-            document.querySelector(".detail-table__row").innerHTML = rowValue;
-
-            let decription = document.querySelector(".product-info__decription");
-            decription.innerHTML = product.title + " decription";
-        });
-    })
-    
-    
-
-    
-    return newProduct;
+    return htmlProduct;
 }
 
 function renderPage(page = 1, products) {
@@ -94,8 +53,8 @@ function renderPage(page = 1, products) {
             break;
         }
         else {
-            let newProduct = renderProduct(products[i]);
-            listProduct.appendChild(newProduct);
+            let htmlProduct = renderProduct(products[i]);
+            listProduct.appendChild(htmlProduct);
         }
     }
     previous_page = current_page;
@@ -165,3 +124,5 @@ function handleRightPaginEvent(e) {
         document.querySelector('.pagination__item.active').nextSibling.click();  
     }
 }
+
+

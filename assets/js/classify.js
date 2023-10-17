@@ -1,66 +1,24 @@
 
 //file nay dung de xu ly phan loai san pham
 
-import { renderToHTML } from "../js/renderProduct.js";
 
-//mo ta: dung map de dem xem so lan xuat hien cac tag aka thong ke
-let tagMap = new Map([]);
-let products = [];
-// fetch('../assets/js/products_data.json')
-// .then(response => response.json())
-// .then(data => {
-//     products = data.products;
-//     products.forEach(product => {
-//         if(!tagMap.has(product.product_type)) tagMap.set(product.product_type, 1);
-//     })
-//     console.log(tagMap);
-// })
 
-let classic = document.querySelector(".classifier__item--classic-filter");
-classic.addEventListener('click',e => {
-    fetch('../assets/js/products_data.json')
-    .then(response => response.json())
-    .then(data => {
-        let results = data.products.filter(product => {
-            return product.product_type.indexOf("3x3") >= 0;
+import { productList } from "./data.js";
+import { renderToHTML } from "../js/renderToMainList.js";
+
+let products = productList;
+let filterBtn = document.querySelectorAll(".classifier__item");
+filterBtn.forEach(type => {
+    type.addEventListener("click", e => {
+        if(!e.target.classList.contains("onUse")) {
+            let curBtn = document.querySelector('.classifier__item.onUse');
+            if(curBtn) curBtn.classList.remove('onUse');
+            e.target.classList.add("onUse");
+        }
+
+        let results = products.filter(product => {
+            return product.type.indexOf(e.target.innerHTML.trim()) >= 0;;
         })
         renderToHTML(results);
     })
-});
-
-let variant = document.querySelector(".classifier__item--variant-filter");
-variant.addEventListener('click',e => {
-    fetch('../assets/js/products_data.json')
-    .then(response => response.json())
-    .then(data => {
-        let results = data.products.filter(product => {
-            return !(product.product_type.indexOf("3x3") >= 0
-            || product.product_type.indexOf("Hardware") >= 0
-            || product.product_type.indexOf("Bag") >= 0
-            || product.product_type.indexOf("Mat") >= 0
-            || product.product_type.indexOf("Stand") >= 0
-            || product.product_type.indexOf("Display") >= 0
-            || product.product_type.indexOf("Timer") >= 0
-            || product.product_type.indexOf("OPTIONS_HIDDEN_PRODUCT") >= 0);
-        })
-        renderToHTML(results);
-    })
-});
-
-let accessories = document.querySelector(".classifier__item--acsr-filter");
-accessories.addEventListener('click',e => {
-    fetch('../assets/js/products_data.json')
-    .then(response => response.json())
-    .then(data => {
-        let results = data.products.filter(product => {
-            return product.product_type.indexOf("Hardware") >= 0
-            || product.product_type.indexOf("Bag") >= 0
-            || product.product_type.indexOf("Mat") >= 0
-            || product.product_type.indexOf("Stand") >= 0
-            || product.product_type.indexOf("Display") >= 0
-            || product.product_type.indexOf("Timer") >= 0
-            || product.product_type.indexOf("OPTIONS_HIDDEN_PRODUCT") >= 0;
-        })
-        renderToHTML(results);
-    })
-});
+})
