@@ -108,6 +108,7 @@
     }
     .list-product {
         grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
     }
     .goto-btn {
         width: 5.5rem; height: 5.5rem;
@@ -131,6 +132,7 @@
     }
     .list-product {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
     .list-product__item {
         height: 220px;

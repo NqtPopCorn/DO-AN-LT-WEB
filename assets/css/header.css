@@ -1,6 +1,7 @@
 /* header */
 .header {
     background-image: linear-gradient(90deg, #B7C6F4, #EADBFF);
+    /* box-shadow: 0 10px 60px 20px rgba(92, 248, 178, 0.357); */
     position: -webkit-sticky;
     position: sticky;
     top: 0;

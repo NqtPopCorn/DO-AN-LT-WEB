@@ -6,10 +6,12 @@ import {renderToHTML} from "./renderProduct.js";
 // 3. xu ly go to top, bottom button
 //
 //
-
+//tao trang chu
+//
+//
 function khoitaoTrangChu() {
     //khoi tao trang chu
-    fetch('https://speedcubeshop.com/products.json')
+    fetch('../assets/js/products_data.json')
     .then(response => response.json())
     .then(data => {
         products = data.products;
@@ -17,25 +19,29 @@ function khoitaoTrangChu() {
     })
 };
 khoitaoTrangChu();
-
+//home button
 let homeBtn = document.querySelector(".header__home");
 homeBtn.addEventListener('click', e => {
     khoitaoTrangChu();
 });
 
+
 //xu ly tim kiem
+//
+//
 let products = [];
 let btn = document.querySelector('.header__search-icon');
 let results = [];
 btn.addEventListener('click', e => {
-    fetch('https://speedcubeshop.com/products.json')
+    fetch('../assets/js/products_data.json')
     .then(response => response.json())
     .then(data => {
         let input = document.getElementById('search').value;
+        let inputRegex = new RegExp(input, 'i');
         products = data.products;
         results = [];
         results = products.filter(product => {
-            return product.title.indexOf(input) >= 0;
+            return product.title.search(inputRegex) >= 0;
         });
         renderToHTML(results);
     })
@@ -49,20 +55,26 @@ search_input.addEventListener('keypress', e => {
     }
 })
 
+
 //detail
+//
+//
 let detail = document.querySelector('.product-detail');
 let detail_layout = document.querySelector(".product-detail__layout");
 detail_layout.addEventListener('click', e => {
     detail.style.display = 'none';
 })
 
+
 // to the top, to the bottom buttons
+//
 //
 let gotoBtn = document.querySelector('.goto-btn');
 gotoBtn.style.transform = 'rotate(180deg)';
 gotoBtn.title = "Go to bottom";
 gotoBtn.onclick = botFunction;
-window.onscroll = function() {
+
+window.addEventListener("scroll", function() {
     if (document.documentElement.scrollTop > 100) {
         gotoBtn.style.transform = 'rotate(0deg)';
         gotoBtn.onclick = topFunction;
@@ -71,7 +83,7 @@ window.onscroll = function() {
         gotoBtn.title = "Go to bottom";
         gotoBtn.onclick = botFunction;
     }
-};
+});
 //scroll to top
 function topFunction() {
     document.body.scrollTop = 0;
@@ -84,8 +96,10 @@ function botFunction() {
 }
 
 
+//detail
 //
-let exitDetailButton = document.querySelector(".exit-detail-button");
+//
+let exitDetailButton = document.querySelector(".detail-exit-button");
 exitDetailButton.addEventListener("click", e => {
     document.querySelector(".product-detail").style.display = "none ";
 });
