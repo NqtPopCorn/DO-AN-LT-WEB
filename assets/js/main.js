@@ -2,31 +2,25 @@ import {renderToHTML} from "./renderToMainList.js";
 import { productList } from "./data.js";
 
 // file nay thuc hien: 
-// 1. render trang chu(home) co phan trang san pham
-// 2. xu ly tim kiem
-// 3. xu ly go to top, bottom button
-// 4. home btn
+// - render trang chu(home) co phan trang san pham
+// - xu ly go to top, bottom button
+// - home btn
 //
 
 //tao trang chu
 //
 //
 let products = productList;
-function khoitaoTrangChu() {
-    //khoi tao trang chu
-    renderToHTML(products);
-};
-khoitaoTrangChu();
+//khoi tao ds o trang chu
+renderToHTML(products);
+
 //home button
 let homeBtn = document.querySelector(".header__home");
 homeBtn.addEventListener('click', e => {
     let classifyBtn = document.querySelector(".classifier__item.onUse");
     if(classifyBtn) classifyBtn.classList.remove("onUse");
-    khoitaoTrangChu();
+    renderToHTML(products);
 });
-
-
-
 
 
 //detail

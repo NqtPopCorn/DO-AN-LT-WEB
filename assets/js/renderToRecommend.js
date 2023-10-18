@@ -1,3 +1,5 @@
+
+//file nay thuc hien in san pham ra search recommend
 //seach recommend
 function renderProductToRecommend(product) {
     let htmlProduct = document.createElement('div');

@@ -1,7 +1,7 @@
 
 //file nay chua cac ham de:
-//1. render san pham ra trang chu
-//2. phan trang danh sach san pham trong trang chu
+//- render san pham ra trang chu
+//- phan trang danh sach san pham trong trang chu
 //
 
 //products_data.json have 30 product
