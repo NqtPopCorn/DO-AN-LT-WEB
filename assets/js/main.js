@@ -9,7 +9,6 @@ import { productList } from "./data.js";
 
 //tao trang chu
 //
-//
 let products = productList;
 //khoi tao ds o trang chu
 renderToHTML(products);
@@ -17,14 +16,10 @@ renderToHTML(products);
 //home button
 let homeBtn = document.querySelector(".header__home");
 homeBtn.addEventListener('click', e => {
-    let classifyBtn = document.querySelector(".classifier__item.onUse");
-    if(classifyBtn) classifyBtn.classList.remove("onUse");
-    renderToHTML(products);
+    document.querySelector(".classifier__item--all").click();
 });
 
-
 //detail
-//
 //
 let detail = document.querySelector('.product-detail');
 let detail_layout = document.querySelector(".product-detail__layout");
@@ -41,7 +36,6 @@ exitDetailButton.addEventListener("click", e => {
 
 
 // to the top, to the bottom buttons
-//
 //
 let gotoBtn = document.querySelector('.goto-btn');
 gotoBtn.style.transform = 'rotate(180deg)';

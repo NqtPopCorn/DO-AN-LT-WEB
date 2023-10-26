@@ -33,11 +33,14 @@
                     <div class="header__search-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <input id="search" class="header__search-input" type="text" placeholder="Search here..." autocomplete="off"/>
-                    <div class="search-recommend"></div>
-                    
+                    <input id="header-search-input" class="header__search-input" type="text" placeholder="Search here..." autocomplete="off"/>
+                    <div class="search-recommend-btn">
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="search-recommend hidden">
+                        <div class="search-recommend__list"></div>
+                    </div>
                 </div>
-                <div class="search-layout"></div>
                 
                 <div class="header__cart">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -61,23 +64,61 @@
             </div>
         
             <div class="classifier__list">
-                <div class="classifier__item classifier__item--advanced-filter">
+                <div class="filter-box" >
+                    <form class="filter-body" name="filter">
+                        <lable class="filter__search">
+                            Product name:
+                            <input type="text" placeholder="Rubik" class="filter__search-input" name="product_name">
+                        </lable>
+                        <div class="filter__select-type">
+                            <label class="filter-type">
+                                <input type="radio" value="" name="type" checked>
+                                All
+                            </label>
+                            <label class="filter-type">  
+                                <input type="radio" value="Classic" name="type">
+                                Classic
+                            </label>
+                            <label class="filter-type"> 
+                                <input type="radio" value="Variant" name="type">
+                                Variant
+                            </label>
+                            <label class="filter-type">
+                                <input type="radio" value="Accessories" name="type">
+                                Accessories
+                            </label>
+                        </div>
+                        <div class="filter__range">
+                            <div class="filter-form__from">From: <input type="number" min=0 name="from" value=0 class="filter__range-input">$</div>
+                            <div class="filter-form__to">To: <input type="number" min=1 name="to" value=5 class="filter__range-input">$</div>
+                            <label class="filter-form__sale-off"> Sale off <input type="checkbox" name="saleoff"></label>
+                        </div>
+                        <button class="filter-submit-btn" type="submit">Confirm</button>
+                    </form>
+                </div>
+
+                <button class="classifier__item classifier__item--advanced-filter">
                     Filter
-                </div>
-                <div class="classifier__item classifier__item--classic-filter">
+                </button>
+                <button class="classifier__item classifier__item--all inUse">
+                    All
+                </button>
+                <button class="classifier__item classifier__item--classic-filter">
                     Classic
-                </div>
-                <div class="classifier__item classifier__item--variant-filter">
+                </button>
+                <button class="classifier__item classifier__item--variant-filter">
                     Variant
-                </div>
-                <div class="classifier__item classifier__item--acsr-filter">
+                </button>
+                <button class="classifier__item classifier__item--acsr-filter">
                     Accessories
-                </div>
+                </button>
             </div>
+            
+
+            <div class="list-title">FOUND PRODUCT</div>
 
             <ul class="list-product"></ul>
 
-            
             <div class="pagination">
                 <i class="fa-solid fa-arrow-left pagination__icon pagination__icon--left"></i>
                 <div class="pagination__list"></div>
@@ -90,7 +131,7 @@
         </div>
 
         <footer class="footer">
-            
+                
         </footer>
     </div>  
 
@@ -120,12 +161,6 @@
         </div>
     </div>
 
-    <div class="filter-box">
-        <div class="box-layout"></div>
-        <div class="filter-content">
-
-        </div>
-    </div>
     
     <script type="module" src="./assets/js/classify.js"></script>
     <script type="module" src="./assets/js/main.js"></script>

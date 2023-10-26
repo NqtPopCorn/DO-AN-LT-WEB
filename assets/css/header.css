@@ -1,3 +1,6 @@
+
+@import url('./header_search.css');
+
 /* header */
 .header {
     background-image: linear-gradient(90deg, #B7C6F4, #EADBFF);
@@ -12,7 +15,7 @@
 
 .header-body {
     display: grid;
-    grid-template-columns: 1.6fr 0.3fr 5.4fr 0.4fr 1.8fr;
+    grid-template-columns: 2fr 0.8fr 7.2fr 0.8fr 2fr;
     gap: 10px;
     align-items: center;
     height: inherit;
@@ -21,6 +24,7 @@
 .header__logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 1.8rem;
 }
 
@@ -36,115 +40,13 @@
 .header__home {
     font-size: 2.3rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header__home:hover{
     color: rgb(1, 107, 255);
-}
-
-/* search */
-/*use to quit recommend when click it*/
-.header__search {
-    height: 60%;
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid rgb(243, 255, 177);
-    background-color: antiquewhite;
-    border-radius: 20px;
-    position: relative;
-    z-index: 20;
-}
-
-.header__search-icon {
-    cursor: pointer;
-    width: 6%;
-    min-width: 30px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px 0 0 20px;
-    font-size: 1.6rem;
-}
-
-.header__search-icon:hover{
-    font-size: 1.7rem;
-}
-
-.header__search-input {
-    width: 100%;
-    height: 100%;
-    min-width: 60px;
-    border-radius: 20px;
-    border-style: none;
-    background-color: antiquewhite;
-    outline: none;
-}
-
-.search-layout { 
-    position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    display: none;
-}
-
-.search-recommend {
-    display: none;
-    position: absolute;
-    width: 100%;
-    max-height: 410px;
-    top: 30px;
-    background-color: #eef9ff;
-    overflow-y: scroll;
-}
-
-.search-recommend-product {
-    width: 100%;
-    padding: 6px;
-    border: solid;
-    display: flex;
-}
-
-.search-recommend-img {
-    width: 110px;
-    height: 110px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    border: 2px solid;
-}
-
-
-.search-recommend-content {
-    flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 1.7rem;
-}   
-
-.search-recommend-name {
-    width: 100%;   
-    height: 30%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    font-size: 2.4rem;
-    font-weight: 600;
-}
-
-.search-recommend-prePrice {
-
-}
-
-.search-recommend-price {
-
-}
-
-.search-recommend-decount {
-
 }
 
 .header__cart {

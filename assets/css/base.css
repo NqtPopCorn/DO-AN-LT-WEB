@@ -7,6 +7,7 @@
     --blue-color: #2638ce;
     --black-blue-hover-color: #1e1e7c;
     --ocean-color: #00b3ff;
+    --blue-background: #e1f3fe;
 }
 
 * {
@@ -37,11 +38,7 @@ html {
     }
 }
 
-.shop {
-    margin: 0;
-    width: 100%;
-    background-image: linear-gradient(90deg, #B7C6F4, #EADBFF);
-}
+
 
 
 

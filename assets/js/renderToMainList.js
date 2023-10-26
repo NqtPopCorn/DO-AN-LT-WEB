@@ -19,7 +19,7 @@ export function renderToHTML(products) {
         renderPagination(products);
     }
     else {
-        listProduct.innerHTML = "Khong co san pham!!!";
+        listProduct.innerHTML = "";
         renderPagination(products);
         controlPaginIconDisplay();
     }

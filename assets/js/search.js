@@ -1,81 +1,143 @@
-
-//xu ly tim kiem
-//
-//
 import { productList } from "./data.js";
+import {renderToHTML} from "./renderToMainList.js"
+
+//file nay xu ly tim kiem tren thanh header
+//khi nhan home thi xoa thanh tim kiem
 
 let products = productList;
-let searchBtn = document.querySelector('.header__search-icon');
+let searchIcon = document.querySelector('.header__search-icon');
+let search_input = document.getElementById('header-search-input');
+let searchRecommend = document.querySelector(".search-recommend");
+let listTitle = document.querySelector(".list-title");
+let headerSearch = document.querySelector(".header__search");
+let productDetail = document.querySelector(".product-detail");
+let resultLimit = 8;
+
 let results = [];
-searchBtn.addEventListener('click', e => {
-    document.querySelector(".search-layout").click();
-    let input = document.getElementById('search').value;
-    let inputRegex = new RegExp(input, 'i');
-    results = [];
-    results = products.filter(product => {
-        return product.name.search(inputRegex) >= 0;
-    });
+searchIcon.addEventListener('click', e => {
+    let input = search_input.value;
+    if(input != "") {
+        let inUseClassifyBtn = document.querySelector(".classifier__item.inUse");
+        if(inUseClassifyBtn) inUseClassifyBtn.classList.remove("inUse");
+        results = [];
+        results = products.filter(product => {
+            return product.name.search(new RegExp(input.trim(),'i')) >= 0;
+        });
+        listTitle.style.display = 'flex';
+        if(results.length > 0) {
+            listTitle.innerHTML = 'FOUND PRODUCTS';
+            if(listTitle.classList.contains("notFoundTitle")) listTitle.classList.remove("notFoundTitle");
+        }
+        else {
+            if(!listTitle.classList.contains("notFoundTitle")) listTitle.classList.add("notFoundTitle");
+            listTitle.innerHTML = "PRODUCT NOT FOUND";
+        }
         renderToHTML(results);
+        if(!searchRecommend.classList.contains("hidden")) searchRecommend.classList.add("hidden");
+        changeCSSDropDownBtn();
+    }
+    else document.querySelector(".classifier__item--all").click();
 });
 //submit search input khi nhan enter
-let search_input = document.getElementById('search');
-let searchRecommend = document.querySelector(".search-recommend");
 search_input.addEventListener('keypress', e => {
     if(e.key == "Enter") {
         e.preventDefault();//?
-        searchBtn.click();
+        searchIcon.click();
     }
-});
-//search recommend
-//chua lam: *****khach hang click vao san pham nao thi luu no vao kho luu tru
-let searchLayout = document.querySelector(".search-layout");
-searchLayout.addEventListener('click', e => {
-    searchRecommend.style.display = "none";
-    searchLayout.style.display = "none";
 });
 
 search_input.addEventListener("click", e => {
-    searchRecommend.style.display = "block";
-    searchLayout.style.display = "block";
-    // !!! lay local storage len de len dau de xuat thay vi dua het len nhu nay
-    search_input.dispatchEvent(new Event('input'));
+    if(searchRecommend.classList.contains("hidden") && search_input.value != "") {
+        dropDownBtn.click();
+    }
     
+    // *** recommend san pham lay tu localStorage
 })
 search_input.addEventListener("input", e => {
-    search_input.click();
-    let input = document.getElementById('search').value;
+    if(searchRecommend.classList.contains("hidden")) searchRecommend.classList.remove("hidden");
+    changeCSSDropDownBtn();
+    let input = search_input.value;
     let inputRegex = new RegExp(input, 'i');
     results = products.filter(product => {
         return product.name.search(inputRegex) >= 0;
     });
     
-    // !!!! chua phan trang, phan nay giong nhu ham render to html
+    if(results.length == 0) {
+        searchRecommend.innerHTML = `<div class="empty-recommend">Product not found!!!</div>`;
+        return;
+    }
+    results = resultLimit < results.length ? results.slice(0,  resultLimit) : results;
+    
     searchRecommend.innerHTML = "";
     results.forEach(product => {
         let newProduct = document.createElement('div');
-        newProduct.classList.add("search-recommend-product");
+        newProduct.classList.add("search-recommend__product");
+        let priceHTML = '';
+        if(product.salePrice) priceHTML = `
+            <div class="recommend-product__decount">
+                <i class="fa-solid fa-tag"></i> ${product.salePercent + '%'}
+            </div>
+            <div class="recommend-product__salePrice">${"$" + product.salePrice}</div>
+            <div class="recommend-product__prePrice inSaleOff">$${product.prePrice}</div>
+        `;
+        else priceHTML = `<div class="recommend-product__prePrice">$${product.prePrice}</div>`;
 
         newProduct.innerHTML = `
-            <div class="search-recommend-img" style="background-image: url('${product.imagePrimary}');"></div>
-            <div class="search-recommend-content">
-                <div class="search-recommend-name">${product.name}</div>
-                <div class="search-recommend-decount">
-                    ${product.salePercent ? '<i class="fa-solid fa-tag"></i>' + product.salePercent + '%' : ''}
+            <div class="recommend-product__img" style="background-image: url('${product.imagePrimary}');"></div>
+            <div class="recommend-product__content">
+                <div class="recommend-product__name">${product.name}</div>
+                <div class="recommend-product__info">
+                    <div class="recommend-product__type">${product.type}</div>
+                    <div class="recommend-product__price">${priceHTML}</div>
+                    <div class="recommend-product__icon icon-more">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </div>
                 </div>
-                <div class="search-recommend-price">${product.salePrice ? "$" + product.salePrice : ''}</div>
-                <div class="search-recommend-prePrice">$${product.prePrice}</div>
-                <div class="search-recommend-type">${product.type}</div>
             </div>
         `;
 
-        //click to show detail
+        //click image or icon to show detail
         newProduct.addEventListener("click", e => {
-            document.querySelector(".product-detail").style.display = "flex";
-            document.querySelector(".detail-img").style.backgroundImage = `url(${product.imagePrimary})`;
-            document.querySelector(".product-name").innerHTML = product.name;
-            document.querySelector(".product-info__decription ").innerHTML = product.desc;
-        })
+            productDetail.style.display = "flex";
+            productDetail.querySelector(".detail-img").style.backgroundImage = `url(${product.imagePrimary})`;
+            productDetail.querySelector(".product-name").innerHTML = product.name;
+            productDetail.querySelector(".product-info__decription ").innerHTML = product.desc;
+            //chua lam: *****khach hang click vao san pham nao thi luu no vao localStorage de recommend
+        });
+
         searchRecommend.appendChild(newProduct);
     });
-    
 });
+
+document.addEventListener('click', e => {
+    if(!headerSearch.contains(e.target) && !productDetail.contains(e.target)) {
+        if(!searchRecommend.classList.contains("hidden")) searchRecommend.classList.add("hidden");
+        changeCSSDropDownBtn();
+    }
+});
+
+let dropDownBtn = document.querySelector(".search-recommend-btn");
+dropDownBtn.addEventListener("click", e => {
+    if(searchRecommend.classList.contains("hidden") && search_input.value != "") {
+        searchRecommend.classList.remove("hidden");
+        changeCSSDropDownBtn();
+    }
+    else if(search_input.value == "" && searchRecommend.classList.contains("hidden")) {
+        search_input.dispatchEvent(new Event("input"));
+        searchRecommend.classList.remove("hidden");
+        changeCSSDropDownBtn();
+    }
+    else {
+        searchRecommend.classList.add("hidden");
+        changeCSSDropDownBtn();
+    }
+});
+
+function changeCSSDropDownBtn() {
+    if(searchRecommend.classList.contains("hidden")) {
+        dropDownBtn.style.transform = 'rotate(0deg)';
+    }
+    else {
+        dropDownBtn.style.transform = 'rotate(180deg)';
+    }
+}
