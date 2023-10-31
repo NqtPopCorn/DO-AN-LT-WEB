@@ -56,7 +56,7 @@
     margin: 0 14px;
 }
 
-.product-name {
+.product-detail__name {
     font-size: 2.6rem;
     font-weight: 600;
     display: flex;
@@ -64,18 +64,10 @@
     align-items: center;
 }
 
-.product-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+.product-detail__info-table {
+    margin-bottom: 18px;
 }
-
-.product-info__table {
-    margin: 0;
-}
-.product-info__table, .product-info__table th, .product-info__table td {
+.product-detail__info-table, .product-detail__info-table th, .product-detail__info-table td {
     border: 2px solid black;
     border-collapse: collapse;
     text-align: center;

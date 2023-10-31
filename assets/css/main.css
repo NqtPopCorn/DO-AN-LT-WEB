@@ -65,8 +65,13 @@
 .footer {
     display: block;
     width: 100%;
-    height: 260px;
-    border: solid;
+    height: 60px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--black-blue-color);
 }
 
 /* ipad */
@@ -96,20 +101,17 @@
 /* mobile */
 @media screen and (max-width: 768px) {
     .banner {
-        height: 300px;
+        height: 240px;
     }
     .list-product {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
     }
     .list-product__item {
-        height: 220px;
+        height: 180px;
     }
     .list-product__item-name {
         line-height: 1.6rem;
-    }
-    .classifier {
-        font-size: 1.5rem;
     }
     .goto-btn {
         width: 5rem; height: 5rem;
@@ -129,11 +131,60 @@
         height: 36px;
         font-size: 1.6rem;
     }
+    .classifier__list {
+        font-size: 1.2rem;
+        gap: 4px;
+    }
+    .classifier__item {
+        min-width: 80px;
+    }
     .header__search, .header__cart-link, .header__logging {
         font-size: 1.5rem;
     }
     .header__logo {
         font-size: 1.6rem;
+    }
+}
+@media screen and (max-width: 300px) {
+    .banner {
+        height: 180px;
+    }
+    .list-product {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 6px;
+    }
+    .list-product__item {
+        height: 150px;
+    }
+    .list-product__item-name {
+        line-height: 1.2rem;
+    }
+    .classifier {
+        font-size: 1.2rem;
+    }
+    .goto-btn {
+        width: 4rem; height: 4rem;
+        font-size: 2.6rem;
+        right: 20px;
+        bottom: 20px;
+    }
+    .banner__btn-subcribe {
+        width: 80px;
+        height: 30px;
+        right: 30px;
+        bottom: 30px;
+        font-size: 1.5rem;
+    }
+    .banner__btn-subcribe:hover {
+        width: 90px;
+        height: 36px;
+        font-size: 1.6rem;
+    }
+    .header__search, .header__cart-link, .header__logging {
+        font-size: 1.2rem;
+    }
+    .header__logo {
+        font-size: 1.3rem;
     }
 }
 

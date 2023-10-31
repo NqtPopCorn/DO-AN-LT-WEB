@@ -30,17 +30,29 @@ function renderProduct(product) {
     htmlProduct.classList.add("list-product__item");
 
     htmlProduct.style.backgroundImage = `url('${product.imagePrimary}')`;
+    let priceHTML;
+    if(product.salePrice) {
+        priceHTML = `
+        <div class="list-product__price">$${product.salePrice}</div>
+        <div class="list-product__salePercent">
+        <i class="fa-solid fa-tag"></i> ${product.salePercent}%
+        </div>`;
+    }
+    else {
+        priceHTML = `<div class="list-product__price">$${product.prePrice}</div>`;
+    }
+    
     htmlProduct.innerHTML = `
-        <div class="list-product__item-price">$${product.salePrice ? product.salePrice : product.prePrice}</div>
-        <h2 class="list-product__item-name">${product.name}</h2>
+        <div class="list-product__price-container">${priceHTML}</div>
+        <h2 class="list-product__name">${product.name}</h2>
     `;
 
     //click to show detail
     htmlProduct.addEventListener("click", e => {
         document.querySelector(".product-detail").style.display = "flex";
         document.querySelector(".detail-img").style.backgroundImage = `url(${product.imagePrimary})`;
-        document.querySelector(".product-name").innerHTML = product.name;
-        document.querySelector(".product-info__decription ").innerHTML = product.desc;
+        document.querySelector(".product-detail__name").innerHTML = product.name;
+        document.querySelector(".product-detail__decription ").innerHTML = product.desc;
     })
     return htmlProduct;
 }

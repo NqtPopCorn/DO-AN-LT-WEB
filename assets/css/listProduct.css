@@ -40,9 +40,17 @@
     justify-content: space-between;
 }
 
-.list-product__item-price {
-    width: 60px;
+.list-product__price-container {
+    width: 100%;
     height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.list-product__price {
+    width: 66px;
+    height: 66px;
     margin-top: 4px;
     margin-left: 4px;
     display: flex;
@@ -56,7 +64,19 @@
     user-select: none;
 }
 
-.list-product__item-name {
+.list-product__salePercent {    
+    width: 70px;
+    height: 50px;
+    font-size: 2rem;
+    color: white;
+    background-color: rgb(255, 142, 66);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 0 0 10px;
+}
+
+.list-product__name {
     margin: 0;
     width: 70%; height: 24%;
     letter-spacing: 0.5px;
@@ -65,7 +85,7 @@
     justify-content: center;
     align-content: center;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 2rem;
     background-color: var(--black-color);
     color: var(--white-color);
@@ -73,6 +93,7 @@
     cursor: default;
 }
 
-.list-product__item-name:hover {
+
+.list-product__name:hover {
     text-shadow: 0px 0px 6px aqua;
 }
