@@ -26,6 +26,16 @@ export function renderToHTML(products) {
 }
 
 function renderProduct(product) {
+    let detailPriceHTML = '';
+    if(product.salePrice) detailPriceHTML = `
+        <div class="recommend-product__decount">
+            <i class="fa-solid fa-tag"></i> ${product.salePercent}%
+        </div>
+        <div class="inSaleOff">$${product.prePrice}</div>
+        <div class="cart-price">$${product.salePrice}</div>
+    `;
+    else detailPriceHTML = `<div class="cart-price">$${product.prePrice}</div>`;
+    
     let htmlProduct = document.createElement('li');
     htmlProduct.classList.add("list-product__item");
 
@@ -35,7 +45,7 @@ function renderProduct(product) {
         priceHTML = `
         <div class="list-product__price">$${product.salePrice}</div>
         <div class="list-product__salePercent">
-        <i class="fa-solid fa-tag"></i> ${product.salePercent}%
+            <i class="fa-solid fa-tag"></i> ${product.salePercent}%
         </div>`;
     }
     else {
@@ -50,7 +60,15 @@ function renderProduct(product) {
     //click to show detail
     htmlProduct.addEventListener("click", e => {
         document.querySelector(".product-detail").style.display = "flex";
-        document.querySelector(".detail-img").style.backgroundImage = `url(${product.imagePrimary})`;
+        let img = document.querySelector(".detail-img");
+        img.style.backgroundImage = `url(${product.imagePrimary})`;
+        img.addEventListener("mouseover", e => {
+            img.style.backgroundImage = `url(${product.imageSecondary})`;
+        })
+        img.addEventListener("mouseout", e => {
+            img.style.backgroundImage = `url(${product.imagePrimary})`;
+        })
+        document.querySelector(".product-detail-prices").innerHTML = detailPriceHTML;
         document.querySelector(".product-detail__name").innerHTML = product.name;
         document.querySelector(".product-detail__decription ").innerHTML = product.desc;
     })

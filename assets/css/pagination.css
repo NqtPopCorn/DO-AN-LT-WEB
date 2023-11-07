@@ -1,9 +1,9 @@
 /* pagination */
 .pagination {
-    margin: 10px 0;
+    padding: 10px 0;
     font-size: 2rem;
     width: 100%;
-    height: 30px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;

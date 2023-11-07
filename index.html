@@ -29,7 +29,7 @@
                     <i class="fa-solid fa-house"></i>
                 </div>
 
-                <div class="header__search">
+                <div class="header__search" >
                     <div class="header__search-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
@@ -41,6 +41,8 @@
                         <div class="search-recommend__list"></div>
                     </div>
                 </div>
+                <div class="search-layout hidden"></div>
+                
                 
                 <div class="header__cart">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -64,7 +66,8 @@
             </div>
         
             <div class="classifier__list">
-                <div class="filter-box" >
+                <div class="filter-box">
+                    <h3>FILTER</h3>
                     <form class="filter-body" name="filter">
                         <lable class="filter__search">
                             Product name:
@@ -89,6 +92,7 @@
                             </label>
                         </div>
                         <div class="filter__range">
+                            <label> Use range<input type="checkbox" name="use-range"></input></label>
                             <div class="filter-form__from">From: <input type="number" min=0 name="from" value=0 class="filter__range-input">$</div>
                             <div class="filter-form__to">To: <input type="number" min=1 name="to" value=5 class="filter__range-input">$</div>
                             <label class="filter-form__sale-off"> Sale off <input type="checkbox" name="saleoff"></label>
@@ -96,7 +100,6 @@
                         <button class="filter-submit-btn" type="submit">Confirm</button>
                     </form>
                 </div>
-
                 <button class="classifier__item classifier__item--advanced-filter">
                     Filter
                 </button>
@@ -112,9 +115,9 @@
                 <button class="classifier__item classifier__item--acsr-filter">
                     Accessories
                 </button>
+                
             </div>
             
-
             <div class="list-title">FOUND PRODUCT</div>
 
             <ul class="list-product"></ul>
@@ -129,44 +132,47 @@
                 <i class="fa-solid fa-circle-arrow-up"></i>
             </div>
         </div>
-
-        <footer class="footer">
-            <p class="footer__copyright">Copyright © 2023 TruongNgo | Built with VS Code by Truong and Members.</p>
-        </footer>
+        
     </div>  
+
+    <footer class="footer">
+        <p class="footer__copyright">Copyright © 2023 TruongNgo | Built with VS Code by Truong and Members.</p>
+    </footer>
 
     <div class="product-detail">
         <div class="product-detail__layout"></div>
         <div class="product-detail__body">
             <div class="product-detail__image">
                 <div class="detail-img"></div>
+
             </div>
             <div class="product-detail__container">
-                <div class="detail-exit-button">
-                    <i class="fa-solid fa-xmark"></i>   
-                </div>
-
                 <div class="product-detail__name"> Rubik Name </div>
-                <table class="product-detail__info-table">
-                    <tr>
-                        <td style="font-weight: bold;">Brand</td>
-                        <td class="detail-brand">Helios</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Type</td>
-                        <td class="detail-type">Classic</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Component</td>
-                        <td class="detail-Chatlieu">Plastic, Magnet</td>
-                    </tr>
-
-                </table>
-                <div class="product-detail__decription"></div>
-                <div class="product-detail__cart" title="Thêm vào giỏ hàng">
-                    <div class="detail-cart-button">
+                <div class="product-detail__wrapper">
+                    <table class="product-detail__info-table">
+                        <tr>
+                            <td style="font-weight: bold;">Brand</td>
+                            <td class="detail-brand">Helios</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Type</td>
+                            <td class="detail-type">Classic</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Components</td>
+                            <td class="detail-Chatlieu">Plastic, Magnet</td>
+                        </tr>
+                    </table>
+                    <div class="product-detail__decription"></div>
+                </div>
+                <div class="product-detail__cart">
+                    <div class="product-detail-prices"></div>
+                    <div class="detail-cart-button" title="Thêm vào giỏ hàng">
                         <i class="fa-solid fa-cart-shopping cart__icon"></i>
                     </div>
+                </div>
+                <div class="detail-exit-button">
+                    <i class="fa-solid fa-xmark"></i>   
                 </div>
             </div>
         </div>

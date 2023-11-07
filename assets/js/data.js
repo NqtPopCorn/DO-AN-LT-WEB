@@ -336,9 +336,9 @@ const productList = [
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur dolorem nihil enim, cumque asperiores illum laboriosam ratione fugiat ducimus autem labore sed beatae dolore quam, accusantium ipsum explicabo doloremque voluptate",
     type: "Accessories",
     imagePrimary:
-      "https://cdn.shopify.com/s/files/1/0354/5169/9333/products/Quan-jogger-5-black-35-ZiZoou-Store.jpg?v=1646560068",
+      "https://speedcubeshop.com/cdn/shop/files/Spooky-House-Mini-Mat_600x.jpg?v=1693550178",
     imageSecondary:
-      "https://cdn.shopify.com/s/files/1/0354/5169/9333/products/Quan-jogger-5-black-38-ZiZoou-Store.jpg?v=1655717831",
+      "https://speedcubeshop.com/cdn/shop/files/Spooky-House-Mini-Mat_600x.jpg?v=1693550178",
   },
   {
     id: 31,
@@ -376,4 +376,11 @@ const typeProductList = ["Classic", "Variant", "Accessories"];
 
 const sortList = ["Default", "Price, low to high", "Price, high to low"];
 
-export { productList, typeProductList, sortList };
+const bannerList = [
+  "https://speedcubeshop.com/cdn/shop/files/Halloween-2023-25_-off-desktop_2160x.progressive.png.jpg?v=1696021455",
+  "https://speedcubeshop.com/cdn/shop/files/Week-2-Web_2160x.progressive.jpg?v=1699246045",
+  "https://speedcubeshop.com/cdn/shop/files/Featured-Discounts-web_2160x.progressive.jpg?v=1699301589",
+  "https://speedcubeshop.com/cdn/shop/files/GAN-Price-Reduction-Banner-Web_2160x.progressive.jpg?v=1692324856",
+  "https://speedcubeshop.com/cdn/shop/files/GAN-14-Banner-Web_2160x.progressive.jpg?v=1691509912"
+]
+export { productList, typeProductList, sortList, bannerList};

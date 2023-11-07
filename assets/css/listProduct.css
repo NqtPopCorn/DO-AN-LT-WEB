@@ -59,7 +59,7 @@
     border-radius: 50%;
     font-size: 1.8rem;
     font-weight: bold;
-    background-color: var(--black-color);
+    background-color: var(--black-blue-color);
     color: var(--white-color);
     user-select: none;
 }
@@ -87,7 +87,7 @@
     text-align: center;
     font-size: 2rem;
     line-height: 2rem;
-    background-color: var(--black-color);
+    background-color: var(--black-blue-color);
     color: var(--white-color);
     border-radius: 0 10px 0 0;
     cursor: default;

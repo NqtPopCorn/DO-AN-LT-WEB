@@ -1,5 +1,5 @@
 import {renderToHTML} from "./renderToMainList.js";
-import { productList } from "./data.js";
+import { bannerList, productList } from "./data.js";
 
 // file nay thuc hien: 
 // - render trang chu(home) co phan trang san pham
@@ -7,11 +7,24 @@ import { productList } from "./data.js";
 // - home btn
 //
 
-//tao trang chu
-//
 let products = productList;
-//khoi tao ds o trang chu
-renderToHTML(products);
+function khoiTaoDanhSach() {
+    renderToHTML(products);
+}
+khoiTaoDanhSach();
+
+let banners = bannerList;
+let banner = document.querySelector(".banner");
+let slideIndex = 0;
+function bannerSlideShow() {
+    if(slideIndex >= banners.length) slideIndex = 0;
+    if(slideIndex < 0) slideIndex = banners.length - 1;
+    banner.style.backgroundImage = `url("${banners[slideIndex]}")`;
+    slideIndex++;
+    setTimeout(bannerSlideShow, 5000);
+}
+bannerSlideShow();
+
 
 //home button
 let homeBtn = document.querySelector(".header__home");

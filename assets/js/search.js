@@ -8,6 +8,7 @@ let products = productList;
 let searchIcon = document.querySelector('.header__search-icon');
 let search_input = document.getElementById('header-search-input');
 let searchRecommend = document.querySelector(".search-recommend");
+let searchLayout = document.querySelector(".search-layout");
 let listTitle = document.querySelector(".list-title");
 let headerSearch = document.querySelector(".header__search");
 let productDetail = document.querySelector(".product-detail");
@@ -54,7 +55,10 @@ search_input.addEventListener("click", e => {
     // *** recommend san pham lay tu localStorage
 })
 search_input.addEventListener("input", e => {
-    if(searchRecommend.classList.contains("hidden")) searchRecommend.classList.remove("hidden");
+    if(searchRecommend.classList.contains("hidden")) {
+        searchRecommend.classList.remove("hidden");
+        searchLayout.classList.remove("hidden");
+    }
     changeCSSDropDownBtn();
     let input = search_input.value;
     let inputRegex = new RegExp(input, 'i');
@@ -109,26 +113,28 @@ search_input.addEventListener("input", e => {
     });
 });
 
-document.addEventListener('click', e => {
-    if(!headerSearch.contains(e.target) && !productDetail.contains(e.target)) {
-        if(!searchRecommend.classList.contains("hidden")) searchRecommend.classList.add("hidden");
-        changeCSSDropDownBtn();
-    }
+searchLayout.addEventListener('click', e => {
+    searchRecommend.classList.add("hidden");
+    searchLayout.classList.add('hidden');
+    changeCSSDropDownBtn();
 });
 
 let dropDownBtn = document.querySelector(".search-recommend-btn");
 dropDownBtn.addEventListener("click", e => {
     if(searchRecommend.classList.contains("hidden") && search_input.value != "") {
         searchRecommend.classList.remove("hidden");
+        searchLayout.classList.remove("hidden");
         changeCSSDropDownBtn();
     }
     else if(search_input.value == "" && searchRecommend.classList.contains("hidden")) {
         search_input.dispatchEvent(new Event("input"));
         searchRecommend.classList.remove("hidden");
+        searchLayout.classList.remove("hidden");
         changeCSSDropDownBtn();
     }
     else {
         searchRecommend.classList.add("hidden");
+        searchLayout.classList.add("hidden");
         changeCSSDropDownBtn();
     }
 });
