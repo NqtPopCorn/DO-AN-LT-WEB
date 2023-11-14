@@ -83,10 +83,12 @@
 .recommend-product__img {
     width: 72px;
     height: 72px;
-    background-size: cover;
+    background-size: contain;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
-    border: 2px solid;
+    border: 1px solid;
     cursor: pointer;
+    margin: auto;
 }
 
 .recommend-product__content {
@@ -115,9 +117,6 @@
     font-size: 1.8rem;
 
 }
-.recommend-product__type {
-    line-height: 2rem;
-}
 
 .recommend-product__price {
     flex-grow: 1;
@@ -129,10 +128,6 @@
 }
 .recommend-product__prePrice, .recommend-product__salePrice{
     color: var(--ocean-color);
-    line-height: 2rem;
-}
-.recommend-product__salePrice {
-    font-size: 1.8rem;
 }
 
 .recommend-product__decount {
@@ -166,4 +161,76 @@
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .recommend-product__content {
+        padding-left: 0;
+    }
+    .recommend-product__name {
+        font-size: 1.6rem;
+    }
+    .recommend-product__info {
+        font-size: 1.4rem;
+        gap: 8px;
+        width: 90%;
+    }
+    .recommend-product__img {
+        width: 60px;
+        height: 60px;
+    }
+    .recommend-product__icon {
+        font-size: 2.4rem;
+    }
+    .recommend-product__price {
+        gap: 8px;
+    }
+    .search-recommend {
+        max-height: 300px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .recommend-product__name {
+        font-size: 1.4rem;
+    }
+    .recommend-product__info {
+        font-size: 1.2rem;
+        gap: 4px;
+        width: 100%;
+    }
+    .recommend-product__img {
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+    }
+    .recommend-product__icon {
+        font-size: 2rem;
+    }
+    .recommend-product__price {
+        gap: 1px;
+    }
+    .search-recommend {
+        max-height: 200px;
+    }
+}
+@media screen and (max-width: 300px) {
+    .recommend-product__name {
+        font-size: 1.2rem;
+    }
+    .recommend-product__info {
+        font-size: 1rem;
+        gap: 4px;
+        width: 100%;
+    }
+    .recommend-product__img {
+        width: 30px;
+        height: 30px;
+        background-size: cover;
+    }
+    .recommend-product__icon {
+        font-size: 1.6rem;
+    }
+    .recommend-product__price {
+        gap: 0;
+    }
 }

@@ -3,7 +3,7 @@
 //filter trigger chua chuan chi nen inUse khi nhan chu filter ben trong
 
 import { productList } from "./data.js";
-import { renderToHTML } from "../js/renderToMainList.js";
+import { renderToHTML } from "../js/render.js";
 
 let products = productList;
 let classifyBtns = document.querySelectorAll(".classifier__item:not(.classifier__item--advanced-filter):not(.classifier__item--all)");
@@ -11,7 +11,7 @@ let listTitle = document.querySelector(".list-title");
 let filterBtn = document.querySelector(".classifier__item--advanced-filter");
 let classifyAllBtn = document.querySelector(".classifier__item--all");
 let filterBox = document.querySelector(".filter-box");
-let filterSubmitBtn = document.querySelector(".filter-submit-btn");
+let filterSubmitBtn = document.querySelector(".filter__submit-btn");
 
 classifyBtns.forEach(type => {
     type.addEventListener("click", e => {
@@ -38,33 +38,33 @@ classifyAllBtn.addEventListener('click', e => {
     }
 })
 
-//lay product list hien tai de loc aka current list
 filterBtn.addEventListener('click', e => {
-    filterBox.classList.add("active");
+    filterBox.classList.add("filter-box--active");
     filterBtn.classList.add("inUse");
 });
 
 document.addEventListener('click', e => {
     if(!filterBox.contains(e.target) && e.target != filterBtn) {
-        filterBox.classList.remove("active");
+        filterBox.classList.remove("filter-box--active");
         filterBtn.classList.remove("inUse");
     }
 });
 
 let filterForm = document.forms["filter"];
-
 filterForm.addEventListener("submit", e => {
     let results = products;
     let type = filterForm["type"];
+    let checkbox = filterForm["use-range"];
     let from = Number(filterForm["from"].value);
     let to = Number(filterForm["to"].value);
     let productName = filterForm["product_name"].value;
 
     results = products.filter(product => {
-        return product.name.search(new RegExp(productName.trim(), "i")) >= 0
+        let checkRange = product.prePrice >= from && product.prePrice <= to;
+
+        return product.name.indexOf(productName.trim()) >= 0
         && (type.value? product.type == type.value : true)
-        && product.prePrice >= from
-        && product.prePrice <= to
+        && checkbox.checked? checkRange : true
         && (filterForm["saleoff"].checked? product.salePrice : true);
     })
 
@@ -76,8 +76,6 @@ filterForm.addEventListener("submit", e => {
         listTitle.innerHTML = "PRODUCT NOT FOUND";
         if(!listTitle.classList.contains("notFoundTitle")) listTitle.classList.add("notFoundTitle");
     }
-    
-    
     listTitle.style.display = "flex";
     renderToHTML(results);
     e.preventDefault();
@@ -87,4 +85,20 @@ filterSubmitBtn.addEventListener("click", e => {
     document.querySelectorAll(".classifier__item.inUse").forEach(btn => btn.classList.remove("inUse"));
     document.querySelector(".shop").click();
     filterBtn.classList.add("inUse");
+})
+
+let filterRangeCheckbox = document.getElementById("filter-range-checkbox");
+filterRangeCheckbox.addEventListener("click", e => {
+    if(!filterRangeCheckbox.checked) {
+        //hide range
+        document.querySelectorAll(".filter-bound").forEach(elm => {
+            elm.classList.add("filter-bound--disable");
+        });
+    }
+    else {
+        //show range
+        document.querySelectorAll(".filter-bound").forEach(elm => {
+            elm.classList.remove("filter-bound--disable");
+        });
+    }
 })

@@ -1,5 +1,5 @@
 import { productList } from "./data.js";
-import {renderToHTML} from "./renderToMainList.js"
+import {renderToHTML} from "./render.js"
 
 //file nay xu ly tim kiem tren thanh header
 //khi nhan home thi xoa thanh tim kiem

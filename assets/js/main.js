@@ -1,4 +1,4 @@
-import {renderToHTML} from "./renderToMainList.js";
+import {renderToHTML} from "./render.js";
 import { bannerList, productList } from "./data.js";
 
 // file nay thuc hien: 
@@ -13,6 +13,7 @@ function khoiTaoDanhSach() {
 }
 khoiTaoDanhSach();
 
+//banner
 let banners = bannerList;
 let banner = document.querySelector(".banner");
 let slideIndex = 0;

@@ -60,7 +60,7 @@ function renderProduct(product) {
     //click to show detail
     htmlProduct.addEventListener("click", e => {
         document.querySelector(".product-detail").style.display = "flex";
-        let img = document.querySelector(".detail-img");
+        let img = document.querySelector(".product-detail__img");
         img.style.backgroundImage = `url(${product.imagePrimary})`;
         img.addEventListener("mouseover", e => {
             img.style.backgroundImage = `url(${product.imageSecondary})`;

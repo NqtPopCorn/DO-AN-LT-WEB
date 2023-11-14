@@ -64,40 +64,41 @@
             <div class="banner">
                 <button type="submit" class="banner__btn-subcribe">Subcribe</button>
             </div>
-        
             <div class="classifier__list">
                 <div class="filter-box">
                     <h3>FILTER</h3>
                     <form class="filter-body" name="filter">
-                        <lable class="filter__search">
+                        <lable class="filter__product-name">
                             Product name:
-                            <input type="text" placeholder="Rubik" class="filter__search-input" name="product_name">
+                            <input type="text" placeholder="Rubik" name="product_name">
                         </lable>
                         <div class="filter__select-type">
-                            <label class="filter-type">
+                            <label class="filter-form-lable">
                                 <input type="radio" value="" name="type" checked>
                                 All
                             </label>
-                            <label class="filter-type">  
+                            <label class="filter-form-lable">  
                                 <input type="radio" value="Classic" name="type">
                                 Classic
                             </label>
-                            <label class="filter-type"> 
+                            <label class="filter-form-lable"> 
                                 <input type="radio" value="Variant" name="type">
                                 Variant
                             </label>
-                            <label class="filter-type">
+                            <label class="filter-form-lable">
                                 <input type="radio" value="Accessories" name="type">
                                 Accessories
                             </label>
                         </div>
+                        
                         <div class="filter__range">
-                            <label> Use range<input type="checkbox" name="use-range"></input></label>
-                            <div class="filter-form__from">From: <input type="number" min=0 name="from" value=0 class="filter__range-input">$</div>
-                            <div class="filter-form__to">To: <input type="number" min=1 name="to" value=5 class="filter__range-input">$</div>
-                            <label class="filter-form__sale-off"> Sale off <input type="checkbox" name="saleoff"></label>
+                            <label class="filter-form-lable"> Use range <input type="checkbox" name="use-range" id="filter-range-checkbox"></label>
+                            <div class="filter-bound filter-bound--disable">From: <input type="number" min=0 name="from" value=0>$</div>
+                            <div class="filter-bound filter-bound--disable">To: <input type="number" min=0 name="to" value=10>$</div>
+                            <label class="filter-form-lable"> Sale off <input type="checkbox" name="saleoff"></label>
                         </div>
-                        <button class="filter-submit-btn" type="submit">Confirm</button>
+                        
+                        <button class="filter__submit-btn" type="submit">Confirm</button>
                     </form>
                 </div>
                 <button class="classifier__item classifier__item--advanced-filter">
@@ -142,10 +143,7 @@
     <div class="product-detail">
         <div class="product-detail__layout"></div>
         <div class="product-detail__body">
-            <div class="product-detail__image">
-                <div class="detail-img"></div>
-
-            </div>
+            <div class="product-detail__img"></div>
             <div class="product-detail__container">
                 <div class="product-detail__name"> Rubik Name </div>
                 <div class="product-detail__wrapper">
@@ -171,9 +169,9 @@
                         <i class="fa-solid fa-cart-shopping cart__icon"></i>
                     </div>
                 </div>
-                <div class="detail-exit-button">
-                    <i class="fa-solid fa-xmark"></i>   
-                </div>
+            </div>
+            <div class="detail-exit-button">
+                <i class="fa-solid fa-xmark"></i>   
             </div>
         </div>
     </div>
