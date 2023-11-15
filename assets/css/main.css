@@ -117,12 +117,6 @@
         height: 36px;
         font-size: 1.6rem;
     }
-    .header__search, .header__cart-link, .header__logging {
-        font-size: 1.5rem;
-    }
-    .header__logo {
-        font-size: 1.6rem;
-    }
 }
 @media screen and (max-width: 300px) {
     .banner {
@@ -145,12 +139,6 @@
         width: 90px;
         height: 36px;
         font-size: 1.6rem;
-    }
-    .header__search, .header__cart-link, .header__logging {
-        font-size: 1.2rem;
-    }
-    .header__logo {
-        font-size: 1.3rem;
     }
 }
 

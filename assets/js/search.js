@@ -1,8 +1,7 @@
 import { productList } from "./data.js";
-import {renderToHTML} from "./render.js"
+import {renderToHTML, renderDetail} from "./render.js"
 
 //file nay xu ly tim kiem tren thanh header
-//khi nhan home thi xoa thanh tim kiem
 
 let products = productList;
 let searchIcon = document.querySelector('.header__search-icon');
@@ -51,8 +50,6 @@ search_input.addEventListener("click", e => {
     if(searchRecommend.classList.contains("hidden") && search_input.value != "") {
         dropDownBtn.click();
     }
-    
-    // *** recommend san pham lay tu localStorage
 })
 search_input.addEventListener("input", e => {
     if(searchRecommend.classList.contains("hidden")) {
@@ -102,13 +99,8 @@ search_input.addEventListener("input", e => {
 
         //click image or icon to show detail
         newProduct.addEventListener("click", e => {
-            productDetail.style.display = "flex";
-            productDetail.querySelector(".detail-img").style.backgroundImage = `url(${product.imagePrimary})`;
-            productDetail.querySelector(".product-name").innerHTML = product.name;
-            productDetail.querySelector(".product-info__decription ").innerHTML = product.desc;
-            //chua lam: *****khach hang click vao san pham nao thi luu no vao localStorage de recommend
+            renderDetail(product);
         });
-
         searchRecommend.appendChild(newProduct);
     });
 });

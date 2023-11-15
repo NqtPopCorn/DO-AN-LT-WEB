@@ -2,6 +2,7 @@
 /*use to quit recommend when click it*/
 .header__search {
     height: 60%;
+    font-size: var(--header-font-size);
     align-items: center;
     border: 1px solid rgb(243, 255, 177);
     background-color: antiquewhite;
@@ -83,7 +84,7 @@
 .recommend-product__img {
     width: 72px;
     height: 72px;
-    background-size: contain;
+    background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     border: 1px solid;
@@ -190,6 +191,9 @@
     }
 }
 @media screen and (max-width: 768px) {
+    .search-recommend__product {
+        padding: 2px;
+    }
     .recommend-product__name {
         font-size: 1.4rem;
     }

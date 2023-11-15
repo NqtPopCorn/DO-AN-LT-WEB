@@ -10,6 +10,13 @@
     width: 100%; height: 30px;
 }
 
+.classifier__item--all {
+    grid-column: 4 / 5;
+}
+.classifier__item--advanced-filter {
+    grid-column: 1 / 2;
+}
+
 .classifier__item {
     border-radius: 20px;
     background-color: var(--black-blue-color);
@@ -24,19 +31,7 @@
 .classifier__item:not(.inUse):hover {
     background-color: #8383a6;
 }
-.classifier__item--all {
-    grid-column: 4 / 5;
-}
-.classifier__item--advanced-filter {
-    grid-column: 1 / 2;
-}
-.filter-box:hover .classifier__item--advanced-filter {
-    
-}
 
-.classifier__item--classic-filter {
-    grid-column: 5 / 6;
-}
 
 .inUse {
     background-color: var(--black-blue-hover-color);
@@ -146,6 +141,17 @@
         --checkbox-gap: 20px;
         --row-size: 18px;
     }
+    .classifier__list {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+        height: 30px;
+    }
+    .classifier__item--all {
+        grid-column: 3 / 4;
+    }
+    .classifier__item--advanced-filter {
+        grid-column: 1 / 2;
+    }
 }
 @media screen and (max-width: 768px) {
     .filter-body {
@@ -155,11 +161,35 @@
     .filter-box h3 {
         font-size: 1.8rem;
     }
+    .classifier__list {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        height: 30px;
+    }
+    .classifier__item--all {
+        grid-column: 2 / 3;
+    }
+    .classifier__item--advanced-filter {
+        grid-column: 1 / 2;
+    }
 }
 @media screen and (max-width: 300px) {
     .filter-body {
         font-size: 1.2rem;
-        --checkbox-gap: 4px;
+        --checkbox-gap: 8px;
+    }
+    .filter-box h3 {
+        font-size: 1.4rem;
+    }
+    .classifier__list {
+        gap: 2px;
+        height: 30px;
+    }
+    .classifier__item--all {
+        grid-column: 2 / 3;
+    }
+    .classifier__item--advanced-filter {
+        grid-column: 1 / 2;
     }
 }
 

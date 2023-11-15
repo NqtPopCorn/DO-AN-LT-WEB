@@ -26,16 +26,6 @@ export function renderToHTML(products) {
 }
 
 function renderProduct(product) {
-    let detailPriceHTML = '';
-    if(product.salePrice) detailPriceHTML = `
-        <div class="recommend-product__decount">
-            <i class="fa-solid fa-tag"></i> ${product.salePercent}%
-        </div>
-        <div class="inSaleOff">$${product.prePrice}</div>
-        <div class="cart-price">$${product.salePrice}</div>
-    `;
-    else detailPriceHTML = `<div class="cart-price">$${product.prePrice}</div>`;
-    
     let htmlProduct = document.createElement('li');
     htmlProduct.classList.add("list-product__item");
 
@@ -59,18 +49,7 @@ function renderProduct(product) {
 
     //click to show detail
     htmlProduct.addEventListener("click", e => {
-        document.querySelector(".product-detail").style.display = "flex";
-        let img = document.querySelector(".product-detail__img");
-        img.style.backgroundImage = `url(${product.imagePrimary})`;
-        img.addEventListener("mouseover", e => {
-            img.style.backgroundImage = `url(${product.imageSecondary})`;
-        })
-        img.addEventListener("mouseout", e => {
-            img.style.backgroundImage = `url(${product.imagePrimary})`;
-        })
-        document.querySelector(".product-detail-prices").innerHTML = detailPriceHTML;
-        document.querySelector(".product-detail__name").innerHTML = product.name;
-        document.querySelector(".product-detail__decription ").innerHTML = product.desc;
+        renderDetail(product);
     })
     return htmlProduct;
 }
@@ -153,6 +132,32 @@ function handleRightPaginEvent(e) {
     if(!rightIcon.classList.contains('disable')) {
         document.querySelector('.pagination__item.active').nextSibling.click();  
     }
+}
+
+export function renderDetail(product) {
+    let productDetail = document.querySelector(".product-detail")
+    let img = document.querySelector(".product-detail__img");
+    let detailPriceHTML = '';
+    if(product.salePrice) detailPriceHTML = `
+        <div class="recommend-product__decount">
+            <i class="fa-solid fa-tag"></i> ${product.salePercent}%
+        </div>
+        <div class="inSaleOff">$${product.prePrice}</div>
+        <div class="cart-price">$${product.salePrice}</div>
+    `;
+    else detailPriceHTML = `<div class="cart-price">$${product.prePrice}</div>`;
+
+    productDetail.style.display = "flex";
+    img.style.backgroundImage = `url(${product.imagePrimary})`;
+    img.addEventListener("mouseover", e => {
+        img.style.backgroundImage = `url(${product.imageSecondary})`;
+    })
+    img.addEventListener("mouseout", e => {
+        img.style.backgroundImage = `url(${product.imagePrimary})`;
+    })
+    productDetail.querySelector(".product-detail-prices").innerHTML = detailPriceHTML;
+    productDetail.querySelector(".product-detail__name").innerHTML = product.name;
+    productDetail.querySelector(".product-detail__decription ").innerHTML = product.desc;
 }
 
 
