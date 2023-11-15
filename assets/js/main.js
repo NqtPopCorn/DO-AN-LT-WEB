@@ -15,12 +15,12 @@ khoiTaoDanhSach();
 
 //banner
 let banners = bannerList;
-let banner = document.querySelector(".banner");
+let banner = document.querySelector(".banner-img");
 let slideIndex = 0;
 function bannerSlideShow() {
     if(slideIndex >= banners.length) slideIndex = 0;
     if(slideIndex < 0) slideIndex = banners.length - 1;
-    banner.style.backgroundImage = `url("${banners[slideIndex]}")`;
+    banner.src = banners[slideIndex];
     slideIndex++;
     setTimeout(bannerSlideShow, 5000);
 }

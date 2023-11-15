@@ -15,15 +15,17 @@
 }
 /* banner */
 .banner {
-    background-image: url("https://speedcubeshop.com/cdn/shop/files/Halloween-2023-25_-off-desktop_2160x.progressive.png.jpg?v=1696021455");
-    background-size: contain;
-    background-position: 50% 50%;
+    margin-top: 3px;
     position: relative;
-    margin-top: 6px;
-    height: 450px;
-    border: 1px solid black;
-    border-radius: 5px;
-    transition: all .5s ease;
+    width: 100%;
+    height: fit-content;
+    transition: all .5s ease; 
+    padding: 0; 
+}
+
+.banner-img {
+    width: 100%;
+    border: 1px solid;
 }
 
 .banner__btn-subcribe {
@@ -39,7 +41,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-
+    font-weight: 500;
     transition: 0.2s ease;
 }
 .banner__btn-subcribe:hover {
@@ -81,9 +83,6 @@
 
 /* ipad */
 @media screen and (max-width: 992px) {
-    .banner {
-        height: 375px;
-    }
     .goto-btn {
         width: 5.5rem; height: 5.5rem;
         font-size: 4.5rem;
@@ -94,9 +93,6 @@
 }
 /* mobile */
 @media screen and (max-width: 768px) {
-    .banner {
-        height: 300px;
-    }
     .goto-btn {
         width: 5rem; height: 5rem;
         font-size: 4rem;
@@ -117,9 +113,6 @@
     }
 }
 @media screen and (max-width: 600px) {
-    .banner {
-        height: 225px;
-    }
     .goto-btn {
         width: 4rem; height: 4rem;
         font-size: 2.6rem;
@@ -137,10 +130,5 @@
         width: 90px;
         height: 36px;
         font-size: 1.6rem;
-    }
-}
-@media screen and (max-width: 400px) {
-    .banner {
-        height: 150px;
     }
 }
