@@ -117,8 +117,8 @@
         gap: 8px;
     }
     .list-product__price {
-        width: calc(1.2rem * 5);height: calc(1.2rem * 5);
-        font-size: 1.2rem;
+        width: calc(1rem * 5);height: calc(1rem * 5);
+        font-size: 1.4rem;
     }
     .list-product__salePercent {
         width: 50px;

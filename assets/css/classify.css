@@ -165,6 +165,7 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 6px;
         height: 30px;
+        font-size: 1.6rem;
     }
     .classifier__item--all {
         grid-column: 2 / 3;
