@@ -3,7 +3,7 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    margin: 12px 0 13px 0;
+    margin: 12px 0 14px 0;
     font-size: 1.8rem;
     text-align: center;
     gap: 10px;
