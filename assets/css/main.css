@@ -17,7 +17,6 @@
 .banner {
     background-image: url("https://speedcubeshop.com/cdn/shop/files/Halloween-2023-25_-off-desktop_2160x.progressive.png.jpg?v=1696021455");
     background-size: contain;
-    background-repeat: no-repeat;
     background-position: 50% 50%;
     position: relative;
     margin-top: 6px;
@@ -145,10 +144,3 @@
         height: 150px;
     }
 }
-
-
-
-
-
-
-
