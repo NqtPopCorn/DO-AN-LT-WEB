@@ -9,8 +9,6 @@ let search_input = document.getElementById('header-search-input');
 let searchRecommend = document.querySelector(".search-recommend");
 let searchLayout = document.querySelector(".search-layout");
 let listTitle = document.querySelector(".list-title");
-let headerSearch = document.querySelector(".header__search");
-let productDetail = document.querySelector(".product-detail");
 let resultLimit = 8;
 
 let results = [];

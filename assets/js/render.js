@@ -1,8 +1,14 @@
 
+
+/********************************/
+
 //file nay chua cac ham de:
 //- render san pham ra trang chu
 //- phan trang danh sach san pham trong trang chu
-//
+//- render chi tiet san pham
+
+//**********************************/
+
 
 //products_data.json have 30 product
 let limitItems, totalPage, limitPageInList = 3, current_page = 0, previous_page = 0;
