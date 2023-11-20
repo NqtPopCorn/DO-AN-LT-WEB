@@ -89,7 +89,9 @@
         right: 40px;
         bottom: 40px;
     }
-    
+    .footer {
+        font-size: 1.8rem;
+    }
 }
 /* mobile */
 @media screen and (max-width: 768px) {
@@ -111,10 +113,13 @@
         height: 36px;
         font-size: 1.6rem;
     }
+    .footer {
+        font-size: 1.6rem;
+    }
 }
 @media screen and (max-width: 600px) {
     .goto-btn {
-        width: 4rem; height: 4rem;
+        width: 3.2rem; height: 3.2rem;
         font-size: 2.6rem;
         right: 20px;
         bottom: 20px;
@@ -130,5 +135,8 @@
         width: 90px;
         height: 36px;
         font-size: 1.6rem;
+    }
+    .footer {
+        font-size: 1.4rem;
     }
 }

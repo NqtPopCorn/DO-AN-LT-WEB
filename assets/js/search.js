@@ -76,7 +76,7 @@ search_input.addEventListener("input", e => {
         let priceHTML = '';
         if(product.salePrice) priceHTML = `
             <div class="recommend-product__decount">
-                <i class="fa-solid fa-tag"></i> ${product.salePercent + '%'}
+                <i class="fa-solid fa-tag"></i>${product.salePercent + '%'}
             </div>
             <div class="recommend-product__salePrice">${"$" + product.salePrice}</div>
             <div class="recommend-product__prePrice inSaleOff">$${product.prePrice}</div>
@@ -84,12 +84,13 @@ search_input.addEventListener("input", e => {
         else priceHTML = `<div class="recommend-product__prePrice">$${product.prePrice}</div>`;
 
         newProduct.innerHTML = `
-            <div class="recommend-product__img" style="background-image: url('${product.imagePrimary}');"></div>
+            <img class="recommend-product__img" src="${product.imagePrimary}"></img>
             <div class="recommend-product__content">
                 <div class="recommend-product__name">${product.name}</div>
                 <div class="recommend-product__info">
-                    <div class="recommend-product__type">${product.type}</div>
-                    <div class="recommend-product__price">${priceHTML}</div>
+                    <div class="recommend-product__price">
+                        ${priceHTML}
+                    </div>
                     <div class="recommend-product__icon icon-more">
                         <i class="fa-solid fa-circle-plus"></i>
                     </div>
