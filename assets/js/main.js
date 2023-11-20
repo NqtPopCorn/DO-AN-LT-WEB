@@ -37,15 +37,25 @@ homeBtn.addEventListener('click', e => {
 //
 let detail = document.querySelector('.product-detail');
 let detail_layout = document.querySelector(".product-detail__layout");
+let detail_body = document.querySelector(".product-detail__body");
 detail_layout.addEventListener('click', e => {
-    //set to default
-    detail.style.zIndex = 30;
-    document.querySelector(".product-detail__body").style.zIndex = 40;
     detail.style.display = 'none';
 });
 let exitDetailButton = document.querySelector(".detail-exit-button");
 exitDetailButton.addEventListener("click", e => {
-    document.querySelector(".product-detail").style.display = "none ";
+    detail.style.display = "none ";
+});
+//sticky exit button
+detail_body.addEventListener("scroll", function() {
+    if(detail_body.scrollTop > 0) {
+        exitDetailButton.style.top = detail_body.scrollTop + "px";
+    }
+    else {
+        exitDetailButton.style.top = 0;
+    }
+});
+window.addEventListener("resize", e => {
+    exitDetailButton.style.top = 0;
 });
 
 

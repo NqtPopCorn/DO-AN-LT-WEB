@@ -24,30 +24,28 @@
     margin: auto;
     background-color: #e1f3fe;
     position: relative;
-    display: grid;
     gap: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    grid-template-columns: 48fr 52fr;
-    grid-template-rows: 1fr;
+    --padding: 16px;
+    padding: 16px;
+    display: flex;
     align-items: stretch;
     z-index: 40;
     background-color: #e1f3fe;
 }
 
 .product-detail__img {
-    max-height: 100%;
-    margin-top: 16px;
-    margin-bottom: 16px;
+    width: 48%;
+    padding-top: calc(48% - var(--padding) * 2);
     transition: all .5s ease;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-color: #e1f3fe;
     background-image: url('https://bizweb.dktcdn.net/thumb/large/100/316/286/products/gan-monster-go-rubik-3x3-gia-re.jpg?v=1593666712000');
 }
 
 .product-detail__container {
+    width: 52%;
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
     background-color: #e1f3fe;
@@ -148,6 +146,11 @@
     justify-content: center;
     align-items: center;
 }
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
 .detail-exit-button:hover {
     color: white;
@@ -158,9 +161,6 @@
     .product-detail__body {
         height: 350px;
     }
-    .product-detail__img, .product-detail__container{
-        max-height: 350px;
-    }
     .product-detail__cart {
         margin-top: 20px;
     }
@@ -168,19 +168,26 @@
         gap: 10px;
     }
 }
+
+/* doi giao dien */
 @media screen and (max-width: 768px) {
     .product-detail__body {
-        grid-template-columns: 1fr;
         height: 66vh;
         overflow: scroll;
         padding-top: 16px;
+        flex-wrap: wrap;
         gap: 0;
+        --mode: 2;
     }
     .product-detail__container {
-        font-size: 1.4rem;
+        width: 100%;
     }
     .product-detail__img {
-        height: 300px;
+        width: 80%;
+        padding-top: 80%;
+        background-size: contain;
+        max-height: unset;
+        margin: 0 auto;
     }
     .product-detail__wrapper {
         height: unset;
