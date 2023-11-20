@@ -60,12 +60,13 @@ filterForm.addEventListener("submit", e => {
     let productName = filterForm["product_name"].value;
 
     results = products.filter(product => {
-        let checkRange = product.prePrice >= from && product.prePrice <= to;
+        let checkRange;
+        if(filterForm["saleoff"].checked && product.salePrice) checkRange = product.salePrice >= from && product.salePrice <= to;
+        else checkRange = product.prePrice >= from && product.prePrice <= to;
         console.log(product.name.indexOf(productName.trim()));
         return product.name.indexOf(productName.trim()) >= 0
         && (type.value? product.type == type.value : true)
         && (checkbox.checked? checkRange : true)
-        && (filterForm["saleoff"].checked? product.salePrice : true);
     })
 
     if(results.length > 0) {
