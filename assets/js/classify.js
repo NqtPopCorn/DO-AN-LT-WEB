@@ -67,6 +67,7 @@ filterForm.addEventListener("submit", e => {
         return product.name.indexOf(productName.trim()) >= 0
         && (type.value? product.type == type.value : true)
         && (useRange.checked? checkRange : true)
+        && filterForm["saleoff"].checked? product.salePrice : true;
     })
 
     if(results.length > 0) {

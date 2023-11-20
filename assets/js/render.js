@@ -164,6 +164,7 @@ export function renderDetail(product) {
     productDetail.querySelector(".product-detail-prices").innerHTML = detailPriceHTML;
     productDetail.querySelector(".product-detail__name").innerHTML = product.name;
     productDetail.querySelector(".product-detail__decription ").innerHTML = product.desc;
+    productDetail.querySelector(".detail__product-type").innerHTML = product.type;
 }
 
 
