@@ -58,6 +58,7 @@ filterForm.addEventListener("submit", e => {
     let from = Number(filterForm["from"].value);
     let to = Number(filterForm["to"].value);
     let productName = filterForm["product_name"].value;
+    let nameRegex = new RegExp(productName.trim(), 'i');
 
     results = products.filter(product => {
         let checkRange;
@@ -65,8 +66,7 @@ filterForm.addEventListener("submit", e => {
             checkRange = product.salePrice >= from && product.salePrice <= to;
         }
         else checkRange = product.prePrice >= from && product.prePrice <= to;
-        console.log(product.name.indexOf(productName.trim()));
-        return product.name.indexOf(productName.trim()) >= 0
+        return product.name.search(nameRegex) >= 0
         && (type.value? product.type == type.value : true)
         && (useRange.checked? checkRange : true)
         && (filterForm["on-sale"].checked? product.salePrice : true);

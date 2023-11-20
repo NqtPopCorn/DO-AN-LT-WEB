@@ -56,10 +56,10 @@ search_input.addEventListener("input", e => {
     }
     changeCSSDropDownBtn();
     let input = search_input.value;
-    let inputRegex = new RegExp(input, 'i');
+    let inputRegex = new RegExp(input.trim(), 'i');
     results = products.filter(product => {
         return product.name.search(inputRegex) >= 0;
-    });
+    }); 
     
     if(results.length == 0) {
         searchRecommend.innerHTML = `<div class="empty-recommend">Product not found!!!</div>`;
