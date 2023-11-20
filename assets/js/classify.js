@@ -54,7 +54,7 @@ let filterForm = document.forms["filter"];
 filterForm.addEventListener("submit", e => {
     let results = products;
     let type = filterForm["type"];
-    let checkbox = filterForm["use-range"];
+    let useRange = filterForm["use-range"];
     let from = Number(filterForm["from"].value);
     let to = Number(filterForm["to"].value);
     let productName = filterForm["product_name"].value;
@@ -66,7 +66,7 @@ filterForm.addEventListener("submit", e => {
         console.log(product.name.indexOf(productName.trim()));
         return product.name.indexOf(productName.trim()) >= 0
         && (type.value? product.type == type.value : true)
-        && (checkbox.checked? checkRange : true)
+        && (useRange.checked? checkRange : true)
     })
 
     if(results.length > 0) {
