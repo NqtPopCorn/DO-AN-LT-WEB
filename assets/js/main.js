@@ -1,12 +1,7 @@
 import {renderToHTML} from "./render.js";
 import { bannerList, productList } from "./data.js";
 
-// file nay thuc hien: 
-// - render trang chu(home) co phan trang san pham
-// - xu ly go to top, bottom button
-// - home btn
-//
-
+//khoi tao danh sach
 let products = productList;
 function khoiTaoDanhSach() {
     renderToHTML(products);
