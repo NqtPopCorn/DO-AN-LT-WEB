@@ -53,6 +53,9 @@ window.addEventListener("resize", e => {
     exitDetailButton.style.top = 0;
 });
 
+//tao cartList duoi local
+localStorage.setItem("cartList", JSON.stringify([]));
+
 
 // to the top, to the bottom buttons
 //
@@ -82,3 +85,8 @@ function botFunction() {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
 }
 
+let a = 3;
+let b = 2;
+let obj = {a, b};
+
+console.log(obj);

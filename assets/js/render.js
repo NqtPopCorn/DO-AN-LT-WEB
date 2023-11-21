@@ -1,5 +1,4 @@
 
-
 /********************************/
 
 //file nay chua cac ham de:
@@ -9,11 +8,11 @@
 
 //**********************************/
 
-
 //products_data.json have 30 product
 let limitItems, totalPage, limitPageInList = 3, current_page = 0, previous_page = 0;
 let listProduct = document.querySelector(".list-product");
 let paginList = document.querySelector('.pagination__list');
+let cartButton = document.querySelector(".detail-cart-button");//detail-cart-btn
 
 export function renderToHTML(products) {
     current_page = 0;
@@ -140,6 +139,7 @@ function handleRightPaginEvent(e) {
     }
 }
 
+
 export function renderDetail(product) {
     let productDetail = document.querySelector(".product-detail")
     let img = document.querySelector(".product-detail__img");
@@ -165,6 +165,29 @@ export function renderDetail(product) {
     productDetail.querySelector(".product-detail__name").innerHTML = product.name;
     productDetail.querySelector(".product-detail__decription ").innerHTML = product.desc;
     productDetail.querySelector(".detail__product-type").innerHTML = product.type;
-}
+
+    cartButton.product = product;
+} 
+cartButton.addEventListener("click", e => {
+    let product = e.currentTarget.product;
+    let cartList = JSON.parse(localStorage.getItem("cartList"));
+    let found = false;
+    for(let prod of cartList) {
+        console.log(prod.id);
+        if(prod.id == product.id) {
+            prod.count++;
+            found = true;
+            break;
+        }
+    }
+    if(!found) {
+        product.count=1;
+        cartList.push(product);
+    }
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+});
+
+
+
 
 
