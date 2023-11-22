@@ -173,7 +173,6 @@ cartButton.addEventListener("click", e => {
     let cartList = JSON.parse(localStorage.getItem("cartList"));
     let found = false;
     for(let prod of cartList) {
-        console.log(prod.id);
         if(prod.id == product.id) {
             prod.count++;
             found = true;
